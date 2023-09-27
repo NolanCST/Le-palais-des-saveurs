@@ -53,28 +53,29 @@
       <div class="mainCont">
         <div class="cont">
           <form class="formulaireProduit">
-            <input type="text" name="Produit" placeholder="Nom du produit" />
+            <input type="text" class="product" name="Produit" placeholder="Nom du produit" />
             <input
               type="number"
+              class="purchasingPriceHT"
               name="PrixAchatHT"
               placeholder="Prix d'achat HT"
             />
-            <input type="text" name="MargeHT" placeholder="Marge HT" />
-            <select name="type" id="">
+            <input type="text" class="margeHT" name="MargeHT" placeholder="Marge HT" />
+            <select name="type" class="type">
               <option value="">----- Choisissez le type -----</option>
-              <option value="">Boisson non alcoolisee</option>
-              <option value="">Boisson alcoolisee</option>
-              <option value="">Autre</option>
+              <option value="bna">Boisson non alcoolisee</option>
+              <option value="ba">Boisson alcoolisee</option>
+              <option value="autre">Autre</option>
             </select>
         </form>
           </form>
         </div>
         <div class="cont2">
           <form class="formulaireProduit">
-            <input type="number" name="Quantité" placeholder="Quantité" />
-            <input type="number" name="Prix Vente HT" placeholder="Prix de vente HT" />
-            <input type="text" placeholder="Prix de vente TTC :" />
-            <input type="number" name="Degré" placeholder="Degré d'alcool" />
+            <input type="number" class="quantity" name="Quantité" placeholder="Quantité" />
+            <input type="number" class="sellingPriceHT" name="Prix Vente HT" placeholder="Prix de vente HT" />
+            <input type="text" class="sellingPriceTTC" name="Prix Vente TTC" placeholder="Prix de vente TTC :" />
+            <input type="number" class="degree" name="Degre" placeholder="Degré d'alcool" />
           </form>
         </div>
       </div>
