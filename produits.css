@@ -2,6 +2,10 @@ body {
   background-color: #6f2c15fb !important;
 }
 
+img {
+  height: 20px;
+}
+
 .cont {
   border: 3px solid rgba(202, 178, 43, 0.84);
   border-radius: 5px;
@@ -10,4 +14,8 @@ body {
   height: 35vw;
   margin: auto;
   margin-top: 50px;
+}
+
+#filterBtn {
+  border: none;
 }
