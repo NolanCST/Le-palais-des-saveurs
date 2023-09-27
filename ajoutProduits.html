@@ -53,32 +53,37 @@
       <div class="mainCont">
         <div class="cont">
           <form class="formulaireProduit">
-            <input type="text" name="Produit" placeholder="Nom du produit" />
+            <div class="1">
+              <input type="text" name="Produit" placeholder="Nom du produit" />
+              <input type="number" name="Quantité" placeholder="Quantité" />
+            </div>
+            <div class="2">
             <input
               type="number"
               name="PrixAchatHT"
               placeholder="Prix d'achat HT"
             />
-            <input type="text" name="MargeHT" placeholder="Marge HT" />
-            <select name="type" id="">
-              <option value="">----- Choisissez le type -----</option>
-              <option value="">Boisson non alcoolisee</option>
-              <option value="">Boisson alcoolisee</option>
-              <option value="">Autre</option>
-            </select>
-        </form>
-          </form>
-        </div>
-        <div class="cont2">
-          <form class="formulaireProduit">
-            <input type="number" name="Quantité" placeholder="Quantité" />
             <input type="number" name="Prix Vente HT" placeholder="Prix de vente HT" />
+          </div>
+            <div class="3">
+            <input type="text" name="MargeHT" placeholder="Marge HT" />
             <input type="text" placeholder="Prix de vente TTC :" />
+          </div>
+       
+         
+        
+        <div class="4">
+          <select name="type" id="">
+            <option value="">----- Choisissez le type -----</option>
+            <option value="">Boisson non alcoolisee</option>
+            <option value="">Boisson alcoolisee</option>
+            <option value="">Autre</option>
+          </select>
             <input type="number" name="Degré" placeholder="Degré d'alcool" />
-          </form>
         </div>
       </div>
       <input type="submit" value="Ajouter" id="AddBtn" />
+    </form>
       <div class="subCont"></div>
     </main>
     <script src="ajoutProduits.js"></script>
