@@ -1,5 +1,11 @@
-body {
+/* body {
   background-color: rgba(117, 38, 9, 0.8) !important;
+} */
+
+body {
+  background-image: url(https://french.xinhuanet.com/photo/2018-11/16/137607240_15422447817811n.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 input[type="text"],
@@ -40,6 +46,11 @@ input[type="submit"]:hover {
 
 select {
   color: rgba(0, 0, 0, 0.499);
+}
+
+@font-face {
+  font-family: roboto;
+  src: url(./Roboto-Bold.ttf);
 }
 
 .mainCont {
@@ -92,10 +103,6 @@ select {
   gap: 5%;
 }
 
-.degree {
-  display: inline !important;
-}
-
 .type {
   height: 51px;
 }
@@ -108,8 +115,9 @@ select {
 }
 
 #editNavBar {
-  border-bottom: 3px solid rgba(202, 178, 43, 0.84);
+  border-bottom: 5px solid rgba(202, 178, 43, 0.84);
   background-color: rgba(231, 230, 226, 0.84) !important;
+  font-family: roboto-bold;
 }
 
 .navbar-expand-lg .navbar-collapse {

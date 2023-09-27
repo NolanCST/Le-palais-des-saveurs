@@ -1,6 +1,6 @@
 #editNavBar {
   background-color: rgba(231, 230, 226, 0.84) !important;
-  border-bottom: solid 5px #ffd700;
+  border-bottom: 5px solid rgba(202, 178, 43, 0.84);
 }
 
 .btnAdd {
@@ -25,6 +25,11 @@
   margin-right: 20px;
 }
 
+@font-face {
+  font-family: roboto;
+  src: url(./Roboto-Bold.ttf);
+}
+
 a:hover {
   color: white !important;
 }
@@ -40,4 +45,6 @@ h1 {
   position: relative;
   top: 300px;
   color: rgba(231, 230, 226, 0.84) !important;
+  font-family: roboto-bold;
+  font-size: 4.5rem !important;
 }

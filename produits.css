@@ -1,9 +1,16 @@
 body {
-  background-color: rgba(117, 38, 9, 0.8) !important;
+  background-image: url(https://french.xinhuanet.com/photo/2018-11/16/137607240_15422447817811n.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 img {
   height: 20px;
+}
+
+@font-face {
+  font-family: roboto;
+  src: url(./Roboto-Bold.ttf);
 }
 
 .cont {
@@ -29,6 +36,8 @@ img {
 
 #editNavBar {
   background-color: rgba(231, 230, 226, 0.84) !important;
+  border-bottom: 5px solid rgba(202, 178, 43, 0.84);
+  font-family: roboto-bold;
 }
 
 .navbar-expand-lg .navbar-collapse {
