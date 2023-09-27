@@ -1,12 +1,11 @@
 body {
-  background-color: #6f2c15fb !important;
+  background-color: rgba(117, 38, 9, 0.8) !important;
 }
 
 input[type="text"],
 input[type="number"],
 select,
-textarea
- {
+textarea {
   width: 100%;
   padding: 12px;
   border: 3px solid rgba(202, 178, 43, 0.84);
@@ -93,7 +92,7 @@ select {
   gap: 5%;
 }
 
-.degree{
+.degree {
   display: inline !important;
 }
 
@@ -106,6 +105,11 @@ select {
   margin-top: 25px;
   color: rgba(0, 0, 0, 0.499);
   text-align: center;
+}
+
+#editNavBar {
+  border-bottom: 3px solid rgba(202, 178, 43, 0.84);
+  background-color: rgba(231, 230, 226, 0.84) !important;
 }
 
 .navbar-expand-lg .navbar-collapse {
