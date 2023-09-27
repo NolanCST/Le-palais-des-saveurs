@@ -29,8 +29,9 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
   position: relative;
-  bottom: 100px;
-  left: 730px;
+  top: 80%;
+  right: 46%;
+  height: 10%;
 }
 
 input[type="submit"]:hover {
