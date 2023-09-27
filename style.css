@@ -10,6 +10,10 @@
   opacity: 0.7;
 }
 
+#editNavBar {
+  background-color: rgba(231, 230, 226, 0.84) !important;
+}
+
 .navbar-expand-lg .navbar-collapse {
   display: flex !important;
   flex-basis: auto;
