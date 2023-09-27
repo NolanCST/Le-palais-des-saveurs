@@ -1,6 +1,5 @@
 let container = document.querySelector(".container");
 const recupLS = localStorage.getItem("@StockArray");
-console.log(recupLS);
 let renderStockArray;
 
 if (recupLS) {
@@ -15,11 +14,7 @@ function renderSTock(array) {
     container.innerHTML += `<div class="">
         <span>${index + 1} | ${element.nameProduct}</span>
         <input class="quntityStock" type="number"/>
-        <span>${element.type} | ${element.purchasingPriceHT} | ${
-      element.sellingPriceHT
-    } | ${element.TVA} | ${element.margeHT} | ${element.sellingPriceTTC} | ${
-      element.degree
-    }</span>
+        <span>${element.type} | ${element.purchasingPriceHT}€ | ${element.sellingPriceHT}€ | ${element.tva} | ${element.margeHT}€ | ${element.sellingPriceTTC}€ | ${element.degree}°</span>
         </div>`;
   });
 }
