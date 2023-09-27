@@ -1,0 +1,13 @@
+body {
+  background-color: #6f2c15fb !important;
+}
+
+.cont {
+  border: 3px solid rgba(202, 178, 43, 0.84);
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  width: 80%;
+  height: 35vw;
+  margin: auto;
+  margin-top: 50px;
+}
