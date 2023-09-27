@@ -13,9 +13,10 @@ img {
   width: 80%;
   height: 35vw;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 #filterBtn {
   border: none;
+  background-color: #f2f2f2;
 }
