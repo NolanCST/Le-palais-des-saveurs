@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   degree.style.display = "none";
-  console.log("TEST");
 });
 
 // Prix toutes taxes comprises
@@ -49,11 +48,9 @@ function degreeAlcool() {
   if (type.value == "ba") {
     // Si le type est "ba", afficher l'input "degree"
     degree.style.display = "block";
-    console.log("TEST2");
   } else {
     // Sinon, masquer l'input "degree"
     degree.style.display = "none";
-    console.log("TEST3");
   }
 }
 
