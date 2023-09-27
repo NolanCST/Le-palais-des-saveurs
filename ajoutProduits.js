@@ -46,10 +46,10 @@ function updateTva() {
 
 function degreeAlcool() {
   if (type.value == "ba") {
-    // Si le type est "ba", masquez l'input "degree"
+    // Si le type est "ba", afficher l'input "degree"
     degree.style.display = "block";
   } else {
-    // Sinon, affichez l'input "degree"
+    // Sinon, masquer l'input "degree"
     degree.style.display = "none";
   }
 }
@@ -119,7 +119,7 @@ let sellingPriceHT = document.querySelector(".sellingPriceHT");
 let margeHT = document.querySelector(".margeHT");
 let sellingPriceTTC = document.querySelector(".sellingPriceTTC");
 let type = document.querySelector(".type");
-let degree = document.querySelector(".degree");
+let degree = document.querySelector("#degree");
 let TVA = document.querySelector(".tva");
 let formulaireProduit = document.querySelector(".formulaireProduit");
 const stockArray = [];
