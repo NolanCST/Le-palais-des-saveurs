@@ -6,7 +6,7 @@ input[type="text"],
 input[type="number"],
 select,
 textarea
-/* span */ {
+ {
   width: 100%;
   padding: 12px;
   border: 3px solid rgba(202, 178, 43, 0.84);
@@ -93,10 +93,8 @@ select {
   gap: 5%;
 }
 
-.quatre {
-  display: flex;
-  flex-direction: row;
-  gap: 5%;
+.degree{
+  display: inline !important;
 }
 
 .type {
@@ -108,4 +106,10 @@ select {
   margin-top: 25px;
   color: rgba(0, 0, 0, 0.499);
   text-align: center;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  display: flex !important;
+  flex-basis: auto;
+  justify-content: end;
 }
