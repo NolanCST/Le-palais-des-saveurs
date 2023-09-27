@@ -1,9 +1,3 @@
-document
-  .querySelector(".formulaireProduit")
-  .addEventListener("submit", function (e) {
-    e.preventDefault(); // Empêchez le formulaire de s'envoyer et de rafraîchir la page
-  });
-
 document.addEventListener("DOMContentLoaded", function (event) {
   degree.style.display = "none";
 });
@@ -60,15 +54,65 @@ function degreeAlcool() {
   }
 }
 
-function calcul() {
-  addBtn.addEventListener("click", function () {
-    calculPriceTTC();
-    calculMargeHT();
-  });
+function addProduct() {
+  document
+    .querySelector(".formulaireProduit")
+    .addEventListener("submit", function (e) {
+      e.preventDefault(); // Empêchez le formulaire de s'envoyer et de rafraîchir la page
+      let product;
+      let nameProductValue = nameProduct.value;
+      let quantityValue = quantity.value;
+      let purchasingPriceHTValue = purchasingPriceHT.value;
+      let sellingPriceHTValue = sellingPriceHT.value;
+      let margeHTValue = margeHT.value;
+      let sellingPriceTTCValue = sellingPriceTTC.value;
+      let degreeValue = degree.value;
+
+      if (type.value == "ba") {
+        product = new BoissonAlcoolisee(
+          nameProductValue,
+          quantityValue,
+          purchasingPriceHTValue,
+          sellingPriceHTValue,
+          margeHTValue,
+          sellingPriceTTCValue,
+          degreeValue
+        );
+      } else if (type.value == "bna") {
+        product = new BoissonNonAlcoolisee(
+          nameProductValue,
+          quantityValue,
+          purchasingPriceHTValue,
+          sellingPriceHTValue,
+          margeHTValue,
+          sellingPriceTTCValue
+        );
+      } else if (type.value == "autre") {
+        product = new AutreProduit(
+          nameProductValue,
+          quantityValue,
+          purchasingPriceHTValue,
+          sellingPriceHTValue,
+          margeHTValue,
+          sellingPriceTTCValue
+        );
+      } else {
+        alert(
+          `Erreur lors de la saisie des données, merci de réitérer votre demande`
+        );
+        return;
+      }
+      console.log("TEST");
+      stockArray.push(product);
+      let saveProduct = JSON.stringify(stockArray);
+      localStorage.setItem("@StockArray", saveProduct);
+      formulaireProduit.reset();
+      console.log("TEST2");
+    });
 }
 
 // VARIABLES
-let product = document.querySelector(".product");
+let nameProduct = document.querySelector(".nameProduct");
 let quantity = document.querySelector(".quantity");
 let purchasingPriceHT = document.querySelector(".purchasingPriceHT");
 let sellingPriceHT = document.querySelector(".sellingPriceHT");
@@ -77,7 +121,7 @@ let sellingPriceTTC = document.querySelector(".sellingPriceTTC");
 let type = document.querySelector(".type");
 let degree = document.querySelector(".degree");
 let TVA = document.querySelector(".tva");
-let addBtn = document.getElementById("addBtn");
+let formulaireProduit = document.querySelector(".formulaireProduit");
 const stockArray = [];
 
 // Ajouter un gestionnaire d'événements pour le champ de sélection du type
@@ -91,91 +135,60 @@ sellingPriceHT.addEventListener("input", calculMargeHT);
 TVA.addEventListener("input", calculPriceTTC);
 sellingPriceHT.addEventListener("input", calculPriceTTC);
 
-// function ajouterProduit(stock, produit) {
-//   stock.push(produit);
-// }
+addProduct();
 
-// let boissonAlcoolisée = new BoissonAlcoolisee(
-//   nom,
-//   quantite,
-//   prixAchatHT,
-//   prixDeVenteHT,
-//   margeHT,
-//   prixDeVenteTTC,
-//   degreAlcool
-// );
-// let boissonNonAlcoolisée = new BoissonNonAlcoolisee(
-//   nom,
-//   quantite,
-//   prixAchatHT,
-//   prixDeVenteHT,
-//   margeHT,
-//   prixDeVenteTTC
-// );
-// let autreProduit = new AutreProduit(
-//   nom,
-//   quantite,
-//   prixAchatHT,
-//   prixDeVenteHT,
-//   margeHT,
-//   prixDeVenteTTC
-// );
+function BoissonAlcoolisee(
+  nameProduct,
+  quantity,
+  purchasingPriceHT,
+  sellingPriceHT,
+  margeHT,
+  sellingPriceTTC,
+  degree
+) {
+  this.nameProduct = nameProduct;
+  this.quantity = quantity;
+  this.purchasingPriceHT = purchasingPriceHT;
+  this.sellingPriceHT = sellingPriceHT;
+  this.margeHT = margeHT;
+  this.sellingPriceTTC = sellingPriceTTC;
+  this.degree = degree;
+  this.tva = "20%";
+  this.type = "ba";
+}
 
-// ajouterProduit(stock, boissonAlcoolisee);
-// ajouterProduit(stock, boissonNonAlcoolisee);
-// ajouterProduit(stock, autreProduit);
+function BoissonNonAlcoolisee(
+  nameProduct,
+  quantity,
+  purchasingPriceHT,
+  sellingPriceHT,
+  margeHT,
+  sellingPriceTTC
+) {
+  this.nameProduct = nameProduct;
+  this.quantity = quantity;
+  this.purchasingPriceHT = purchasingPriceHT;
+  this.sellingPriceHT = sellingPriceHT;
+  this.margeHT = margeHT;
+  this.sellingPriceTTC = sellingPriceTTC;
+  this.tva = "5.5%";
+  this.type = "bna";
+}
 
-// afficherStock(stock);
-
-// function BoissonAlcoolisee(
-//   nom,
-//   quantite,
-//   prixAchatHT,
-//   prixDeVenteHT,
-//   margeHT,
-//   prixDeVenteTTC,
-//   degreAlcool
-// ) {
-//   this.nom = nom;
-//   this.quantite = quantite;
-//   this.prixAchatHT = prixAchatHT;
-//   this.prixDeVenteHT = prixDeVenteHT;
-//   this.margeHT = margeHT;
-//   this.prixDeVenteTTC = prixDeVenteTTC;
-//   this.degreAlcool = degreAlcool;
-//   this.type = "ba";
-// }
-
-// function BoissonNonAlcoolisee(
-//   nom,
-//   quantite,
-//   prixAchatHT,
-//   prixDeVenteHT,
-//   margeHT,
-//   prixDeVenteTTC
-// ) {
-//   this.nom = nom;
-//   this.quantite = quantite;
-//   this.prixAchatHT = prixAchatHT;
-//   this.prixDeVenteHT = prixDeVenteHT;
-//   this.margeHT = margeHT;
-//   this.prixDeVenteTTC = prixDeVenteTTC;
-//   this.type = "bna";
-// }
-
-// function AutreProduit(
-//   nom,
-//   quantite,
-//   prixAchatHT,
-//   prixDeVenteHT,
-//   margeHT,
-//   prixDeVenteTTC
-// ) {
-//   this.nom = nom;
-//   this.quantite = quantite;
-//   this.prixAchatHT = prixAchatHT;
-//   this.prixDeVenteHT = prixDeVenteHT;
-//   this.margeHT = margeHT;
-//   this.prixDeVenteTTC = prixDeVenteTTC;
-//   this.type = "autre";
-// }
+function AutreProduit(
+  nameProduct,
+  quantity,
+  purchasingPriceHT,
+  sellingPriceHT,
+  margeHT,
+  sellingPriceTTC
+) {
+  this.nameProduct = nameProduct;
+  this.quantity = quantity;
+  this.purchasingPriceHT = purchasingPriceHT;
+  this.sellingPriceHT = sellingPriceHT;
+  this.margeHT = margeHT;
+  this.sellingPriceTTC = sellingPriceTTC;
+  this.tva = "5.5%";
+  this.type = "autre";
+}
