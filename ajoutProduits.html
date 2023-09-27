@@ -3,18 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="ajoutProduits.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <title>Le palais des saveurs</title>
+
+    <title>Ajout produits</title>
   </head>
-  <body>
+  <body id="body">
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary" id="editNavBar">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Le palais des saveurs</a>
           <button
@@ -39,23 +40,46 @@
                 >
               </li>
               <li class="nav-item">
-                <!-- <a class="nav-link active" aria-current="page" href="#"
+                <a class="nav-link active" aria-current="page" href="#"
                   >Ajouter</a
-                > -->
-                <button class="btnAdd">Ajouter</button>
+                >
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    <main></main>
-    <footer></footer>
-    <script src="script.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+    <main>
+      <div class="mainCont">
+        <div class="cont">
+          <form class="formulaireProduit">
+            <input type="text" name="Produit" placeholder="Nom du produit" />
+            <input
+              type="number"
+              name="PrixAchatHT"
+              placeholder="Prix d'achat HT"
+            />
+            <input type="number" name="MargeHT" placeholder="Marge HT" />
+            <select name="type" id="">
+              <option value="">hihi</option>
+              <option value="">haha</option>
+              <option value="">hoho</option>
+            </select>
+        </form>
+          </form>
+        </div>
+        <div class="cont2">
+          <form class="formulaireProduit">
+            <input type="number" name="Quantité" placeholder="Quantité" />
+            <input type="number" name="Prix Vente HT" placeholder="Prix de vente HT" />
+            <input type="text" placeholder="Prix de vente TTC :" />
+            <input type="number" name="Degré" placeholder="Degré d'alcool" />
+          </form>
+        </div>
+      </div>
+      <input type="submit" value="Ajouter" id="AddBtn" />
+      <div class="subCont"></div>
+    </main>
+    <script src="ajoutProduits.js"></script>
   </body>
 </html>
