@@ -14,3 +14,24 @@
   flex-basis: auto;
   justify-content: end;
 }
+
+#palais {
+  margin-left: 20px;
+}
+
+.navbar-expand-lg .navbar-nav {
+  flex-direction: row;
+  gap: 30px;
+  margin-right: 20px;
+}
+
+a:hover {
+  color: white !important;
+}
+
+body {
+  /* background-color: rgba(117, 38, 9, 0.8) !important; */
+  background-image: url(https://french.xinhuanet.com/photo/2018-11/16/137607240_15422447817811n.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

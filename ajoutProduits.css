@@ -117,3 +117,13 @@ select {
   flex-basis: auto;
   justify-content: end;
 }
+
+.navbar-expand-lg .navbar-nav {
+  flex-direction: row;
+  gap: 30px;
+  margin-right: 20px;
+}
+
+#palais {
+  margin-left: 20px;
+}
