@@ -15,3 +15,18 @@ img {
   margin: auto;
   margin-top: 60px;
 }
+
+#filter{
+  background-color: #f2f2f2;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+#filterBtn {
+  border: none;
+  background-color: #f2f2f2;
+}
+
+#editNavBar{
+  background-color: rgba(231, 230, 226, 0.84) !important;
+}
