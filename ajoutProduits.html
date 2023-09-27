@@ -51,12 +51,14 @@
     </header>
     <main>
       <div class="mainCont">
-        
+        <div class="title">
+          <h1>Ajouter votre produit</h1>
+        </div>
         <div class="cont">
           <form class="formulaireProduit">
             <div class="un">
-              <input type="text" name="Produit" class="product" placeholder="Nom du produit" />
-              <input type="number" name="Quantité" class="quantity" placeholder="Quantité" />
+              <input type="text" name="product" class="product" placeholder="Nom du produit" />
+              <input type="number" name="quantity" class="quantity" placeholder="Quantité" />
               <select name="type" class="type">
                 <option value=""> Type </option>
                 <option value="bna">Boisson non alcoolisee</option>
@@ -69,20 +71,19 @@
               <input
               type="number"
               class="purchasingPriceHT"
-              name="PrixAchatHT"
+              name="purchasingPriceHT"
               placeholder="Prix d'achat HT"
-              class="purchasingPriceHT"
             />
-            <input type="number" name="Prix Vente HT" class="sellingPriceHT"  placeholder="Prix de vente HT" />
+            <input type="number" name="sellingPriceHT" class="sellingPriceHT"  placeholder="Prix de vente HT" />
             <input type="text" name="tva" class="tva" placeholder="TVA">
           </div>
             
             
           
             <div class="trois">
-            <input type="text" name="MargeHT" class="margeHT" placeholder="Marge HT" />
-            <input type="text" class="sellingPriceTTC" placeholder="Prix de vente TTC :" />
-            <input type="number" name="Degré" class="degree" placeholder="Degré d'alcool" />
+            <input type="text" name="margeHT" class="margeHT" placeholder="Marge HT" />
+            <input type="text" class="sellingPriceTTC" name="sellingPriceTTC" placeholder="Prix de vente TTC :" />
+            <input type="number" name="degree" class="degree" placeholder="Degré d'alcool" />
           </div>
        
       </div>
