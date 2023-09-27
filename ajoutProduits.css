@@ -39,10 +39,6 @@ input[type="submit"]:hover {
   background-color: rgba(245, 210, 8, 0.933);
 }
 
-h1 {
-  text-align: center;
-}
-
 select {
   color: rgba(0, 0, 0, 0.499);
 }
@@ -54,7 +50,7 @@ select {
   width: 80%;
   height: 35vw;
   margin: auto;
-    margin-top: auto;
+  margin-top: auto;
   margin-top: auto;
   display: flex;
   margin-top: 60px;
@@ -69,11 +65,9 @@ select {
   background-color: #f2f2f2;
   width: 85%;
   margin: auto;
-    margin-left: auto;
+  margin-left: auto;
   margin-left: 30px;
 }
-
-
 
 .formulaireProduit {
   width: 100%;
@@ -109,7 +103,9 @@ select {
   height: 51px;
 }
 
-.title{
+.title {
   height: 48px;
-  margin-top: 20px;
+  margin-top: 25px;
+  color: rgba(0, 0, 0, 0.499);
+  text-align: center;
 }
