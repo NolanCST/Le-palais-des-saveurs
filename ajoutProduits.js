@@ -102,12 +102,10 @@ function addProduct() {
         );
         return;
       }
-      console.log("TEST");
       stockArray.push(product);
       let saveProduct = JSON.stringify(stockArray);
       localStorage.setItem("@StockArray", saveProduct);
       formulaireProduit.reset();
-      console.log("TEST2");
     });
 }
 
