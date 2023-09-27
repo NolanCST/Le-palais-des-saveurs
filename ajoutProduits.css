@@ -79,7 +79,7 @@ input[type="submit"]:hover {
   display: flex;
   flex-direction: row;
   gap: 5%;
-  
+  align-items: baseline;
 }
 
 .deux{
@@ -100,11 +100,6 @@ input[type="submit"]:hover {
   gap: 5%;
 }
 
-/* .tva{
-  word-wrap: normal;
-  width: 3%;
-  position: absolute;
-  right: 169px;
-  top: 55%;
+.type{
   height: 51px;
-} */
+}
