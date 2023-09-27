@@ -56,7 +56,13 @@
             <div class="un">
               <input type="text" name="Produit" class="product" placeholder="Nom du produit" />
               <input type="number" name="Quantité" class="quantity" placeholder="Quantité" />
-            </div>
+              <select name="type" class="type">
+                <option value="">----- Choisissez le type -----</option>
+                <option value="bna">Boisson non alcoolisee</option>
+                <option value="ba">Boisson alcoolisee</option>
+                <option value="autre">Autre</option>
+              </div>
+
             <div class="deux">
             <input
               type="number"
@@ -66,12 +72,9 @@
               class="purchasingPriceHT"
             />
             <input type="number" name="Prix Vente HT" class="sellingPriceHT"  placeholder="Prix de vente HT" />
-            <select name="tva" id="tva">
-              <option value="">5,5%</option>
-              <option value="">20%</option>
-              
-            </select>
-          </div>
+            <input type="number" name="tva" class="tva" placeholder="TVA">
+            </div>
+          
             <div class="trois">
             <input type="text" name="MargeHT" class="margeHT" placeholder="Marge HT" />
             <input type="text" class="sellingPriceTTC" placeholder="Prix de vente TTC :" />
@@ -80,16 +83,11 @@
          
         
         <div class="quatre">
-          <select name="type" class="type">
-            <option value="">----- Choisissez le type -----</option>
-            <option value="bna">Boisson non alcoolisee</option>
-            <option value="ba">Boisson alcoolisee</option>
-            <option value="autre">Autre</option>
           </select>
             <input type="number" name="Degré" class="degree" placeholder="Degré d'alcool" />
         </div>
       </div>
-      <input type="submit" value="Ajouter" id="AddBtn" />
+      <input type="submit" value="Ajouter" class="addBtn" />
     </form>
       <div class="subCont"></div>
     </main>

@@ -55,6 +55,7 @@ input[type="submit"]:hover {
   border-radius: 5px;
   background-color: #f2f2f2;
   margin: auto;
+  width: 85%;
 }
 
 .cont2 {
@@ -76,24 +77,33 @@ input[type="submit"]:hover {
 .un{
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  gap: 5%;
   
 }
 
 .deux{
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  gap: 5%;
 }
 
 .trois{
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  gap: 5%;
 }
 
 .quatre{
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  gap: 5%;
 }
+
+/* .tva{
+  word-wrap: normal;
+  width: 3%;
+  position: absolute;
+  right: 169px;
+  top: 55%;
+  height: 51px;
+} */
