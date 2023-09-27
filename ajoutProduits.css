@@ -38,6 +38,14 @@ input[type="submit"]:hover {
   background-color: rgba(245, 210, 8, 0.933);
 }
 
+h1 {
+  text-align: center;
+}
+
+select {
+  color: rgba(0, 0, 0, 0.499);
+}
+
 .mainCont {
   border: 3px solid rgba(202, 178, 43, 0.84);
   border-radius: 5px;
@@ -45,7 +53,7 @@ input[type="submit"]:hover {
   width: 80%;
   height: 35vw;
   margin: auto;
-    margin-top: auto;
+  margin-top: auto;
   display: flex;
   margin-top: 60px;
 }
@@ -69,37 +77,36 @@ input[type="submit"]:hover {
   top: 9px;
 }
 
-.formulaireProduit{
+.formulaireProduit {
   width: 100%;
   margin-left: 5%;
 }
 
-
-.un{
+.un {
   display: flex;
   flex-direction: row;
   gap: 5%;
   align-items: baseline;
 }
 
-.deux{
+.deux {
   display: flex;
   flex-direction: row;
   gap: 5%;
 }
 
-.trois{
+.trois {
   display: flex;
   flex-direction: row;
   gap: 5%;
 }
 
-.quatre{
+.quatre {
   display: flex;
   flex-direction: row;
   gap: 5%;
 }
 
-.type{
+.type {
   height: 51px;
 }
