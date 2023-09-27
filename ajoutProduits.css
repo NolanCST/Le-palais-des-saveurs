@@ -29,9 +29,10 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
   position: relative;
-  top: 80%;
-  right: 46%;
   height: 10%;
+  width: 10%;
+  left: 45%;
+  bottom: 6%;
 }
 
 input[type="submit"]:hover {
@@ -53,9 +54,12 @@ select {
   width: 80%;
   height: 35vw;
   margin: auto;
+    margin-top: auto;
   margin-top: auto;
   display: flex;
   margin-top: 60px;
+  flex-direction: column;
+  gap: 10%;
 }
 
 .cont {
@@ -63,8 +67,10 @@ select {
   flex-direction: column;
   border-radius: 5px;
   background-color: #f2f2f2;
-  margin: auto;
   width: 85%;
+  margin: auto;
+    margin-left: auto;
+  margin-left: 30px;
 }
 
 .cont2 {
@@ -109,4 +115,9 @@ select {
 
 .type {
   height: 51px;
+}
+
+.title{
+  height: 48px;
+  margin-top: 20px;
 }
