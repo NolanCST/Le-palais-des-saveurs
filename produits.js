@@ -9,19 +9,43 @@ function renderStock(array) {
     const productDiv = document.createElement("div");
     productDiv.className = "productDiv";
     if (element.type == "ba") {
-      productDiv.innerHTML = `<span>${index + 1} |  Nom: <span class="editName">${element.nameProduct}</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
+      productDiv.innerHTML = `<span>${
+        index + 1
+      } |  Nom: <span class="editName">${
+        element.nameProduct
+      }</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
         element.quantity
       }" style="background-color: ${backgroundColor}" />
-        Type: <span class="editType">${element.type}</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${element.purchasingPriceHT}€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
+        Type: <span class="editType">${
+          element.type
+        }</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${
+        element.purchasingPriceHT
+      }€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
         element.sellingPriceHT
-      }€</span><span> | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${element.degree}°</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
+      }€</span><span> | TVA: ${element.tva} | Marge HT: ${
+        element.margeHT
+      }€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${
+        element.degree
+      }°</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     } else {
-      productDiv.innerHTML = `<span>${index + 1} |  Nom: <span class="editName">${element.nameProduct}</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
+      productDiv.innerHTML = `<span>${
+        index + 1
+      } |  Nom: <span class="editName">${
+        element.nameProduct
+      }</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
         element.quantity
       }" style="background-color: ${backgroundColor}" />
-        Type: <span class="editType">${element.type}</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${element.purchasingPriceHT}€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
+        Type: <span class="editType">${
+          element.type
+        }</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${
+        element.purchasingPriceHT
+      }€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
         element.sellingPriceHT
-      }€</span><span> | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ </span><button class="editBtn"></button><button class="btnDel"></button><br>`;
+      }€</span><span> | TVA: ${element.tva} | Marge HT: ${
+        element.margeHT
+      }€ | Prix de vente TTC: ${
+        element.sellingPriceTTC
+      }€ </span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     }
 
     contProduct.appendChild(productDiv);
@@ -35,7 +59,8 @@ function renderStock(array) {
       }
       const newQuantity = parseInt(quantityStock.value);
       element.quantity = newQuantity;
-      const updatedStockArray = JSON.parse(localStorage.getItem("@StockArray")) || [];
+      const updatedStockArray =
+        JSON.parse(localStorage.getItem("@StockArray")) || [];
       updatedStockArray[index] = element; // Mettez à jour l'élément dans le tableau
       localStorage.setItem("@StockArray", JSON.stringify(updatedStockArray)); // Mettez à jour le localStorage
     });
@@ -58,71 +83,50 @@ function deleteProduct() {
 }
 
 function modifProduct() {
-  let btnEditArray = document.querySelectorAll(".editBtn");
-  btnEditArray.forEach(function (element, index) {
-    element.addEventListener("click", function () {
-      // Récupérez l'élément spécifique que vous souhaitez modifier dans renderStockArray
-      const productToEdit = renderStockArray[index];
+  let productDivs = document.querySelectorAll(".productDiv");
 
-      // Créez des éléments d'entrée pour chaque propriété que vous souhaitez modifier
-      const editNameInput = document.createElement("input");
-      editNameInput.className = "editInput";
-      editNameInput.type = "text";
-      editNameInput.value = productToEdit.nameProduct;
+  productDivs.forEach(function (productDiv) {
+    let editBtn = productDiv.querySelector(".editBtn");
+    let editName = productDiv.querySelector(".editName");
+    let editType = productDiv.querySelector(".editType");
+    let editPurchasingPriceHT = productDiv.querySelector(
+      ".editPurchasingPriceHT"
+    );
+    let editSellingPriceHT = productDiv.querySelector(".editSellingPriceHT");
 
-      const editTypeSelect = document.createElement("select");
-      editTypeSelect.name = "productType";
-      editTypeSelect.id = "productTypeFilter";
-      editTypeSelect.innerHTML = `
-        <option value="ba">Boisson alcoolisée</option>
-        <option value="bna">Boisson non alcoolisée</option>
-        <option value="autre">Autre</option>
-      `;
-      editTypeSelect.value = productToEdit.type;
-
-      const editPurchasingPriceHTInput = document.createElement("input");
-      editPurchasingPriceHTInput.className = "editInput";
-      editPurchasingPriceHTInput.type = "number";
-      editPurchasingPriceHTInput.value = productToEdit.purchasingPriceHT;
-
-      const editSellingPriceHTInput = document.createElement("input");
-      editSellingPriceHTInput.className = "editInput";
-      editSellingPriceHTInput.type = "number";
-      editSellingPriceHTInput.value = productToEdit.sellingPriceHT;
-
-      // Remplacez le contenu actuel par les éléments d'entrée
-      const parentDiv = element.parentElement; // Parent du bouton "Modifier"
-      parentDiv.querySelector(".editName").innerHTML = "";
-      parentDiv.querySelector(".editName").appendChild(editNameInput);
-
-      parentDiv.querySelector(".editType").innerHTML = "";
-      parentDiv.querySelector(".editType").appendChild(editTypeSelect);
-
-      parentDiv.querySelector(".editPurchasingPriceHT").innerHTML = "";
-      parentDiv.querySelector(".editPurchasingPriceHT").appendChild(editPurchasingPriceHTInput);
-
-      parentDiv.querySelector(".editSellingPriceHT").innerHTML = "";
-      parentDiv.querySelector(".editSellingPriceHT").appendChild(editSellingPriceHTInput);
-
-      // Ajoutez un gestionnaire d'événements pour sauvegarder les modifications
-      const saveButton = document.createElement("button");
-      saveButton.className = "saveBtn";
-      saveButton.innerText = "Enregistrer";
-      parentDiv.appendChild(saveButton);
-
-      saveButton.addEventListener("click", function () {
-        // Mettez à jour les propriétés de l'élément avec les nouvelles valeurs
-        productToEdit.nameProduct = editNameInput.value;
-        productToEdit.type = editTypeSelect.value;
-        productToEdit.purchasingPriceHT = parseFloat(editPurchasingPriceHTInput.value);
-        productToEdit.sellingPriceHT = parseFloat(editSellingPriceHTInput.value);
-
-        // Mettez à jour le localStorage avec le tableau modifié
-        localStorage.setItem("@StockArray", JSON.stringify(renderStockArray));
-
-        // Rechargez la liste avec les modifications
-        renderStock(renderStockArray);
+    editBtn.addEventListener("click", function () {
+      editName.innerHTML = `<input class="editInput editInputName" type="text"/>`;
+      editType.innerHTML = `<select name="productType" class="editSelectType">
+      <option value="">---Type---</option>
+      <option value="ba">ba</option>
+      <option value="bna">bna</option>
+      <option value="autre">autre</option>
+    </select>`;
+      editPurchasingPriceHT.innerHTML = `<input class="editInput editInputPurchasingPriceHT" type="number"/>`;
+      editSellingPriceHT.innerHTML = `<input class="editInput editInputSellingPriceHT" type="number"/>`;
+      // Mettez à jour les données du produit avec les nouvelles valeurs
+      let editInputName = document.querySelector(".editInputName");
+      let editSelectType = document.querySelector(".editSelectType");
+      let editInputPurchasingPriceHT = document.querySelector(
+        ".editInputPurchasingPriceHT"
+      );
+      let editInputSellingPriceHT = document.querySelector(
+        ".editInputSellingPriceHT"
+      );
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          editName.innerHTML = `<span>${editInputName.value}</span>`;
+          editType.innerHTML = `<span>${editSelectType.value}</span>`;
+          editPurchasingPriceHT.innerHTML = `<span>${editInputPurchasingPriceHT.value}€</span>`;
+          editSellingPriceHT.innerHTML = `<span>${editInputSellingPriceHT.value}€</span>`;
+          const updatedProductName = editName.innerHTML;
+          const updatedProductType = editType.innerHTML;
+          const updatedProductPPrice = editPurchasingPriceHT.innerHTML;
+          const updatedProductSPrice = editSellingPriceHT.innerHTML;
+        }
       });
+      // Mettez à jour les données du produit dans votre système (par exemple, localStorage)
+      //   // Vous pouvez ajouter ici la logique pour sauvegarder les modifications
     });
   });
 }
@@ -133,7 +137,11 @@ function filterProduct() {
     let filteredArray = renderStockArray.filter(function (element) {
       if (filterValue === "") {
         // Utilisez === pour la comparaison stricte
-        return element.type === "ba" || element.type === "bna" || element.type === "autre";
+        return (
+          element.type === "ba" ||
+          element.type === "bna" ||
+          element.type === "autre"
+        );
       } else {
         return element.nameProduct.toLowerCase().includes(filterValue);
       }
@@ -146,7 +154,11 @@ function filterType() {
   productTypeFilter.addEventListener("input", () => {
     let filteredArray = renderStockArray.filter(function (element) {
       if (productTypeFilter.value == "") {
-        return element.type == "ba" || element.type == "bna" || element.type == "autre";
+        return (
+          element.type == "ba" ||
+          element.type == "bna" ||
+          element.type == "autre"
+        );
       } else {
         return element.type == productTypeFilter.value;
       }
