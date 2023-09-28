@@ -9,15 +9,19 @@ function renderStock(array) {
     const productDiv = document.createElement("div");
     productDiv.className = "productDiv";
     if (element.type == "ba") {
-      productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
-        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${
-        element.degree
-      }°</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
+      productDiv.innerHTML = `<span>${index + 1} |  Nom: <span class="editName">${element.nameProduct}</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
+        element.quantity
+      }" style="background-color: ${backgroundColor}" />
+        Type: <span class="editType">${element.type}</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${element.purchasingPriceHT}€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
+        element.sellingPriceHT
+      }€</span><span> | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${element.degree}°</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     } else {
-      productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
-        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
-        element.sellingPriceTTC
-      }€ </span><button class="editBtn"></button><button class="btnDel"></button><br>`;
+      productDiv.innerHTML = `<span>${index + 1} |  Nom: <span class="editName">${element.nameProduct}</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
+        element.quantity
+      }" style="background-color: ${backgroundColor}" />
+        Type: <span class="editType">${element.type}</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${element.purchasingPriceHT}€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
+        element.sellingPriceHT
+      }€</span><span> | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ </span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     }
 
     contProduct.appendChild(productDiv);
@@ -56,7 +60,70 @@ function deleteProduct() {
 function modifProduct() {
   let btnEditArray = document.querySelectorAll(".editBtn");
   btnEditArray.forEach(function (element, index) {
-    element.addEventListener("click", function () {});
+    element.addEventListener("click", function () {
+      // Récupérez l'élément spécifique que vous souhaitez modifier dans renderStockArray
+      const productToEdit = renderStockArray[index];
+
+      // Créez des éléments d'entrée pour chaque propriété que vous souhaitez modifier
+      const editNameInput = document.createElement("input");
+      editNameInput.className = "editInput";
+      editNameInput.type = "text";
+      editNameInput.value = productToEdit.nameProduct;
+
+      const editTypeSelect = document.createElement("select");
+      editTypeSelect.name = "productType";
+      editTypeSelect.id = "productTypeFilter";
+      editTypeSelect.innerHTML = `
+        <option value="ba">Boisson alcoolisée</option>
+        <option value="bna">Boisson non alcoolisée</option>
+        <option value="autre">Autre</option>
+      `;
+      editTypeSelect.value = productToEdit.type;
+
+      const editPurchasingPriceHTInput = document.createElement("input");
+      editPurchasingPriceHTInput.className = "editInput";
+      editPurchasingPriceHTInput.type = "number";
+      editPurchasingPriceHTInput.value = productToEdit.purchasingPriceHT;
+
+      const editSellingPriceHTInput = document.createElement("input");
+      editSellingPriceHTInput.className = "editInput";
+      editSellingPriceHTInput.type = "number";
+      editSellingPriceHTInput.value = productToEdit.sellingPriceHT;
+
+      // Remplacez le contenu actuel par les éléments d'entrée
+      const parentDiv = element.parentElement; // Parent du bouton "Modifier"
+      parentDiv.querySelector(".editName").innerHTML = "";
+      parentDiv.querySelector(".editName").appendChild(editNameInput);
+
+      parentDiv.querySelector(".editType").innerHTML = "";
+      parentDiv.querySelector(".editType").appendChild(editTypeSelect);
+
+      parentDiv.querySelector(".editPurchasingPriceHT").innerHTML = "";
+      parentDiv.querySelector(".editPurchasingPriceHT").appendChild(editPurchasingPriceHTInput);
+
+      parentDiv.querySelector(".editSellingPriceHT").innerHTML = "";
+      parentDiv.querySelector(".editSellingPriceHT").appendChild(editSellingPriceHTInput);
+
+      // Ajoutez un gestionnaire d'événements pour sauvegarder les modifications
+      const saveButton = document.createElement("button");
+      saveButton.className = "saveBtn";
+      saveButton.innerText = "Enregistrer";
+      parentDiv.appendChild(saveButton);
+
+      saveButton.addEventListener("click", function () {
+        // Mettez à jour les propriétés de l'élément avec les nouvelles valeurs
+        productToEdit.nameProduct = editNameInput.value;
+        productToEdit.type = editTypeSelect.value;
+        productToEdit.purchasingPriceHT = parseFloat(editPurchasingPriceHTInput.value);
+        productToEdit.sellingPriceHT = parseFloat(editSellingPriceHTInput.value);
+
+        // Mettez à jour le localStorage avec le tableau modifié
+        localStorage.setItem("@StockArray", JSON.stringify(renderStockArray));
+
+        // Rechargez la liste avec les modifications
+        renderStock(renderStockArray);
+      });
+    });
   });
 }
 
@@ -99,6 +166,8 @@ if (recupLS) {
 } else {
   renderStockArray = [];
 }
+
+modifProduct();
 
 filterProduct();
 
