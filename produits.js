@@ -75,15 +75,21 @@ function modifProduct() {
     let editSellingPriceTTC = productDiv.querySelector(".editSellingPriceTTC");
 
     editBtn.addEventListener("click", function () {
-      editName.innerHTML = `<input class="editInput editInputName" type="text" value=""/>`;
-      editType.innerHTML = `<select name="productType" class="editSelectType">
+      // Récupérez les valeurs précédentes depuis les éléments existants
+      let previousName = editName.textContent;
+      let previousType = editType.textContent;
+      let previousPurchasingPriceHT = parseFloat(editPurchasingPriceHT.textContent);
+      let previousSellingPriceHT = parseFloat(editSellingPriceHT.textContent);
+      console.log(editName.value);
+      editName.innerHTML = `<input class="editInput editInputName" type="text" value="${previousName}"/>`;
+      editType.innerHTML = `<select name="productType" class="editSelectType" value="${previousType}">
       <option value="">---Type---</option>
       <option value="ba">ba</option>
       <option value="bna">bna</option>
       <option value="autre">autre</option>
     </select>`;
-      editPurchasingPriceHT.innerHTML = `<input class="editInput editInputPurchasingPriceHT" type="number" value=""/>`;
-      editSellingPriceHT.innerHTML = `<input class="editInput editInputSellingPriceHT" type="number" value=""/>`;
+      editPurchasingPriceHT.innerHTML = `<input class="editInput editInputPurchasingPriceHT" type="number" value="${previousPurchasingPriceHT}"/>`;
+      editSellingPriceHT.innerHTML = `<input class="editInput editInputSellingPriceHT" type="number" value="${previousSellingPriceHT}"/>`;
 
       // Mettez à jour les données du produit avec les nouvelles valeurs
       let editInputName = productDiv.querySelector(".editInputName");
