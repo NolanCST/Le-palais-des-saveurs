@@ -12,12 +12,12 @@ function renderStock(array) {
       productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
         <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${
         element.degree
-      }°</span><button class="btnDel">X</button><br>`;
+      }°</span><button class="editDel">/</button><button class="btnDel">X</button><br>`;
     } else {
       productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
     <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
         element.sellingPriceTTC
-      }€ </span><button class="btnDel">X</button><br>`;
+      }€ </span><button class="editDel">/</button><button class="btnDel">X</button><br>`;
     }
 
     contProduct.appendChild(productDiv);
