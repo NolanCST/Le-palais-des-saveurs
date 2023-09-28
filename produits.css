@@ -73,19 +73,25 @@ a {
 
 .contProduct {
   margin-top: 10px;
-  border-top: solid 1px rgba(202, 178, 43, 0.84);
-  border-bottom: solid 1px rgba(202, 178, 43, 0.84);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: justify;
+}
+
+.productDiv {
+  border-top: solid 1px rgba(202, 178, 43, 0.84);
+  border-bottom: solid 1px rgba(202, 178, 43, 0.84);
+  margin-top: 10px;
 }
 
 .quantityStock {
-  width: 35px;
+  width: 55px;
   border-radius: 4px;
 }
 
 .btnDel {
   background-color: rgba(231, 229, 226, 0.1);
   border-radius: 4px;
+  align-items: flex-end !important;
 }
