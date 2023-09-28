@@ -6,27 +6,54 @@ function renderStock(array) {
 
   array.forEach(function (element, index) {
     const backgroundColor = element.quantity >= 10 ? "#01D758" : "#DC143C"; // Condition de couleur de fond initiale
-
     const productDiv = document.createElement("div");
+
     productDiv.className = "productDiv";
+
     if (element.type == "ba") {
-      productDiv.innerHTML = `<span>${index + 1} |  Nom: <span class="editName">${element.nameProduct}</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
+      productDiv.innerHTML = `<span>${
+        index + 1
+      } |  Nom: <span class="editName">${
+        element.nameProduct
+      }</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
         element.quantity
       }" style="background-color: ${backgroundColor}" />
-        Type: <span class="editType">${element.type}</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${element.purchasingPriceHT}€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
+        Type: <span class="editType">${
+          element.type
+        }</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${
+        element.purchasingPriceHT
+      }€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
         element.sellingPriceHT
-      }€</span><span> | TVA: ${element.tva} | Marge HT: <span class="editMargeHT">${element.margeHT}€</span> | Prix de vente TTC: <span class="editSellingPriceTTC">${element.sellingPriceTTC}€</span> | Degre: ${
+      }€</span><span> | TVA: ${
+        element.tva
+      }</span> | Marge HT: <span class="editMargeHT">${
+        element.margeHT
+      }€</span> | Prix de vente TTC: <span class="editSellingPriceTTC">${
+        element.sellingPriceTTC
+      }€</span> | Degre: ${
         element.degree
       }°</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     } else {
-      productDiv.innerHTML = `<span>${index + 1} |  Nom: <span class="editName">${element.nameProduct}</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
+      productDiv.innerHTML = `<span>${
+        index + 1
+      } |  Nom: <span class="editName">${
+        element.nameProduct
+      }</span> | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
         element.quantity
       }" style="background-color: ${backgroundColor}" />
-        Type: <span class="editType">${element.type}</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${element.purchasingPriceHT}€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
+        Type: <span class="editType">${
+          element.type
+        }</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${
+        element.purchasingPriceHT
+      }€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
         element.sellingPriceHT
-      }€</span> | TVA: <Span class="editTva">${element.tva}</span> | Marge HT: <span class="editMargeHT">${element.margeHT}€</span> | Prix de vente TTC: <span class="editSellingPriceTTC">${
+      }€</span> | TVA: <span class="editTva">${
+        element.tva
+      }</span> % | Marge HT: <span class="editMargeHT">${
+        element.margeHT
+      }</span>€ | Prix de vente TTC: <span class="editSellingPriceTTC">${
         element.sellingPriceTTC
-      }€</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
+      }</span>€<button class="editBtn"></button><button class="btnDel"></button><br>`;
     }
 
     contProduct.appendChild(productDiv);
@@ -40,7 +67,8 @@ function renderStock(array) {
       }
       const newQuantity = parseInt(quantityStock.value);
       element.quantity = newQuantity;
-      const updatedStockArray = JSON.parse(localStorage.getItem("@StockArray")) || [];
+      const updatedStockArray =
+        JSON.parse(localStorage.getItem("@StockArray")) || [];
       updatedStockArray[index] = element; // Mettez à jour l'élément dans le tableau
       localStorage.setItem("@StockArray", JSON.stringify(updatedStockArray)); // Mettez à jour le localStorage
     });
@@ -69,14 +97,18 @@ function modifProduct() {
     let editBtn = productDiv.querySelector(".editBtn");
     let editName = productDiv.querySelector(".editName");
     let editType = productDiv.querySelector(".editType");
-    let editPurchasingPriceHT = productDiv.querySelector(".editPurchasingPriceHT");
+    let editPurchasingPriceHT = productDiv.querySelector(
+      ".editPurchasingPriceHT"
+    );
     let editSellingPriceHT = productDiv.querySelector(".editSellingPriceHT");
 
     editBtn.addEventListener("click", function () {
       // Récupérez les valeurs précédentes depuis les éléments existants
       let previousName = editName.textContent;
       let previousType = editType.textContent;
-      let previousPurchasingPriceHT = parseFloat(editPurchasingPriceHT.textContent);
+      let previousPurchasingPriceHT = parseFloat(
+        editPurchasingPriceHT.textContent
+      );
       let previousSellingPriceHT = parseFloat(editSellingPriceHT.textContent);
       // Créez un tableau d'options pour le <select>
       let typeOptions = ["ba", "bna", "autre"];
@@ -104,8 +136,12 @@ function modifProduct() {
       let editTva = document.querySelector(".editTva");
       let editInputName = productDiv.querySelector(".editInputName");
       let editSelectType = productDiv.querySelector(".editSelectType");
-      let editInputPurchasingPriceHT = productDiv.querySelector(".editInputPurchasingPriceHT");
-      let editInputSellingPriceHT = productDiv.querySelector(".editInputSellingPriceHT");
+      let editInputPurchasingPriceHT = productDiv.querySelector(
+        ".editInputPurchasingPriceHT"
+      );
+      let editInputSellingPriceHT = productDiv.querySelector(
+        ".editInputSellingPriceHT"
+      );
 
       // Gestionnaire d'événements pour le calcul de la marge HT et du prix de vente TTC
       editInputPurchasingPriceHT.addEventListener("input", function () {
@@ -124,17 +160,44 @@ function modifProduct() {
           let newPurchasingPriceHT = editInputPurchasingPriceHT.value;
           let newSellingPriceHT = editInputSellingPriceHT.value;
           let newQuantity = quantityStock.value;
-          let newMargeHT = editMargeHT.value;
-          let newSellingPriceTTC = editSellingPriceTTC.value;
-          let newTva = editTva.value;
+          let newMargeHT = editMargeHT.innerHTML;
+          let newSellingPriceTTC = editSellingPriceTTC.innerHTML;
+          let newTva = editTva.innerHTML;
+
+          console.log("editInputName", editInputName);
+          console.log("editSelectType", editSelectType);
+          console.log("editInputPurchasingPriceHT", editInputPurchasingPriceHT);
+          console.log("editInputSellingPriceHT", editInputSellingPriceHT);
+          console.log("quantityStock", quantityStock);
+          console.log("editMargeHT", editMargeHT);
+          console.log("editSellingPriceTTC", editSellingPriceTTC);
+          console.log("editTva", editTva);
+
+          console.log("------");
+
+          console.log("newName", newName);
+          console.log("newType", newType);
+          console.log("newPurchasingPriceHT", newPurchasingPriceHT);
+          console.log("newSellingPriceHT", newSellingPriceHT);
+          console.log("newQuantity", newQuantity);
+          console.log("newMargeHT", newMargeHT);
+          console.log("newSellingPriceTTC", newSellingPriceTTC);
+          console.log("newTva", newTva);
+
           // Mettez à jour les éléments visuels avec les nouvelles valeurs
-          editName.innerHTML = `<span>${newName}</span>`;
-          editType.innerHTML = `<span>${newType}</span>`;
-          editPurchasingPriceHT.innerHTML = `<span>${newPurchasingPriceHT}€</span>`;
-          editSellingPriceHT.innerHTML = `<span>${newSellingPriceHT}€</span>`;
+          editName.innerHTML = newName;
+          editType.innerHTML = newType;
+          editPurchasingPriceHT.innerHTML = newPurchasingPriceHT;
+          editSellingPriceHT.innerHTML = newSellingPriceHT;
+
+          console.log("------");
+
+          console.log("editName", editName);
+          console.log("editType", editType);
+          console.log("editPurchasingPriceHT", editPurchasingPriceHT);
+          console.log("editSellingPriceHT", editSellingPriceHT);
 
           // Mettez à jour les données du produit dans votre système ici
-
           // Sauvegardez les nouvelles valeurs dans le localStorage
           let productData = {
             nameProduct: newName,
@@ -144,20 +207,28 @@ function modifProduct() {
             sellingPriceHT: parseFloat(newSellingPriceHT),
             tva: parseFloat(newTva),
             margeHT: parseFloat(newMargeHT),
-            SellingPriceTTC: parseFloat(newSellingPriceTTC),
+            sellingPriceTTC: parseFloat(newSellingPriceTTC),
           };
 
+          console.log("productData", productData);
+
           // Récupérez le tableau de produits depuis le localStorage
-          let updatedStockArray = JSON.parse(localStorage.getItem("@StockArray")) || [];
+          let updatedStockArray =
+            JSON.parse(localStorage.getItem("@StockArray")) || [];
 
           // Récupérez l'index de l'élément dans le tableau
-          let productIndex = Array.from(productDiv.parentElement.children).indexOf(productDiv);
+          let productIndex = Array.from(
+            productDiv.parentElement.children
+          ).indexOf(productDiv);
 
           // Mettez à jour l'élément correspondant dans le tableau
           updatedStockArray[productIndex] = productData;
 
           // Mettez à jour le localStorage avec le tableau mis à jour
-          localStorage.setItem("@StockArray", JSON.stringify(updatedStockArray));
+          localStorage.setItem(
+            "@StockArray",
+            JSON.stringify(updatedStockArray)
+          );
         }
       });
 
@@ -167,10 +238,15 @@ function modifProduct() {
 }
 
 function calculateMarginAndTTC(productDiv) {
-  let editInputPurchasingPriceHT = productDiv.querySelector(".editInputPurchasingPriceHT");
-  let editInputSellingPriceHT = productDiv.querySelector(".editInputSellingPriceHT");
+  let editInputPurchasingPriceHT = productDiv.querySelector(
+    ".editInputPurchasingPriceHT"
+  );
+  let editInputSellingPriceHT = productDiv.querySelector(
+    ".editInputSellingPriceHT"
+  );
   let editMargeHT = productDiv.querySelector(".editMargeHT");
   let editSellingPriceTTC = productDiv.querySelector(".editSellingPriceTTC");
+  let tva = productDiv.querySelector(".editTva");
 
   // Récupérez les valeurs du champ de modification du prix d'achat HT et du prix de vente HT
   let purchasingPriceHT = parseFloat(editInputPurchasingPriceHT.value);
@@ -180,12 +256,13 @@ function calculateMarginAndTTC(productDiv) {
   if (!isNaN(purchasingPriceHT) && !isNaN(sellingPriceHT)) {
     // Calculez la marge HT
     let margeHT = sellingPriceHT - purchasingPriceHT;
-    editMargeHT.innerHTML = `<span>${margeHT.toFixed(2)}€</span>`;
+    editMargeHT.innerHTML = margeHT.toFixed(2);
 
     // Calculez le prix de vente TTC (en supposant une TVA de 20%)
-    let tva = 0.2; // 20% de TVA
-    let sellingPriceTTC = sellingPriceHT * (1 + tva);
-    editSellingPriceTTC.innerHTML = `<span>${sellingPriceTTC.toFixed(2)}€</span>`;
+    // let tva = 0.2; // 20% de TVA
+    let sellingPriceTTC =
+      sellingPriceHT * (1 + parseFloat(tva.innerHTML) / 100);
+    editSellingPriceTTC.innerHTML = sellingPriceTTC.toFixed(2);
   }
 }
 
@@ -195,7 +272,11 @@ function filterProduct() {
     let filteredArray = renderStockArray.filter(function (element) {
       if (filterValue === "") {
         // Utilisez === pour la comparaison stricte
-        return element.type === "ba" || element.type === "bna" || element.type === "autre";
+        return (
+          element.type === "ba" ||
+          element.type === "bna" ||
+          element.type === "autre"
+        );
       } else {
         return element.nameProduct.toLowerCase().includes(filterValue);
       }
@@ -208,7 +289,11 @@ function filterType() {
   productTypeFilter.addEventListener("input", () => {
     let filteredArray = renderStockArray.filter(function (element) {
       if (productTypeFilter.value == "") {
-        return element.type == "ba" || element.type == "bna" || element.type == "autre";
+        return (
+          element.type == "ba" ||
+          element.type == "bna" ||
+          element.type == "autre"
+        );
       } else {
         return element.type == productTypeFilter.value;
       }

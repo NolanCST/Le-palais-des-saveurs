@@ -35,7 +35,8 @@ function calculPriceTTC() {
 
 // marge hors taxes
 function calculMargeHT() {
-  let valeurCalculMargeHT = parseFloat(sellingPriceHT.value) - parseFloat(purchasingPriceHT.value);
+  let valeurCalculMargeHT =
+    parseFloat(sellingPriceHT.value) - parseFloat(purchasingPriceHT.value);
   if (!isNaN(valeurCalculMargeHT)) {
     margeHT.value = valeurCalculMargeHT.toFixed(2);
   } else {
@@ -46,9 +47,9 @@ function calculMargeHT() {
 // Mettre à jour la TVA en fonction du type sélectionné
 function updateTva() {
   if (type.value == "ba") {
-    TVA.value = "20%";
+    TVA.value = 20;
   } else if (type.value == "bna" || type.value == "autre") {
-    TVA.value = "5.5%";
+    TVA.value = 5.5;
   } else {
     TVA.value = "";
   }
@@ -67,32 +68,58 @@ function degreeAlcool() {
 
 // Ajout du formulaire completer dans le localStorage
 function addProduct() {
-  document.querySelector(".formulaireProduit").addEventListener("submit", function (e) {
-    e.preventDefault(); // Empêchez le formulaire de s'envoyer et de rafraîchir la page
-    let product;
-    let nameProductValue = nameProduct.value;
-    let quantityValue = quantity.value;
-    let purchasingPriceHTValue = purchasingPriceHT.value;
-    let sellingPriceHTValue = sellingPriceHT.value;
-    let margeHTValue = margeHT.value;
-    let sellingPriceTTCValue = sellingPriceTTC.value;
-    let degreeValue = degree.value;
+  document
+    .querySelector(".formulaireProduit")
+    .addEventListener("submit", function (e) {
+      e.preventDefault(); // Empêchez le formulaire de s'envoyer et de rafraîchir la page
+      let product;
+      let nameProductValue = nameProduct.value;
+      let quantityValue = quantity.value;
+      let purchasingPriceHTValue = purchasingPriceHT.value;
+      let sellingPriceHTValue = sellingPriceHT.value;
+      let margeHTValue = margeHT.value;
+      let sellingPriceTTCValue = sellingPriceTTC.value;
+      let degreeValue = degree.value;
 
-    if (type.value == "ba") {
-      product = new BoissonAlcoolisee(nameProductValue, quantityValue, purchasingPriceHTValue, sellingPriceHTValue, margeHTValue, sellingPriceTTCValue, degreeValue);
-    } else if (type.value == "bna") {
-      product = new BoissonNonAlcoolisee(nameProductValue, quantityValue, purchasingPriceHTValue, sellingPriceHTValue, margeHTValue, sellingPriceTTCValue);
-    } else if (type.value == "autre") {
-      product = new AutreProduit(nameProductValue, quantityValue, purchasingPriceHTValue, sellingPriceHTValue, margeHTValue, sellingPriceTTCValue);
-    } else {
-      alert(`Erreur lors de la saisie des données, merci de réitérer votre demande`);
-      return;
-    }
-    stockArray.push(product);
-    let saveProduct = JSON.stringify(stockArray);
-    localStorage.setItem("@StockArray", saveProduct);
-    formulaireProduit.reset();
-  });
+      if (type.value == "ba") {
+        product = new BoissonAlcoolisee(
+          nameProductValue,
+          quantityValue,
+          purchasingPriceHTValue,
+          sellingPriceHTValue,
+          margeHTValue,
+          sellingPriceTTCValue,
+          degreeValue
+        );
+      } else if (type.value == "bna") {
+        product = new BoissonNonAlcoolisee(
+          nameProductValue,
+          quantityValue,
+          purchasingPriceHTValue,
+          sellingPriceHTValue,
+          margeHTValue,
+          sellingPriceTTCValue
+        );
+      } else if (type.value == "autre") {
+        product = new AutreProduit(
+          nameProductValue,
+          quantityValue,
+          purchasingPriceHTValue,
+          sellingPriceHTValue,
+          margeHTValue,
+          sellingPriceTTCValue
+        );
+      } else {
+        alert(
+          `Erreur lors de la saisie des données, merci de réitérer votre demande`
+        );
+        return;
+      }
+      stockArray.push(product);
+      let saveProduct = JSON.stringify(stockArray);
+      localStorage.setItem("@StockArray", saveProduct);
+      formulaireProduit.reset();
+    });
 }
 
 // LANCEMENT DE LA PAGE
@@ -127,7 +154,15 @@ addProduct();
 
 //FONCTION CONSTRUCTION
 
-function BoissonAlcoolisee(nameProduct, quantity, purchasingPriceHT, sellingPriceHT, margeHT, sellingPriceTTC, degree) {
+function BoissonAlcoolisee(
+  nameProduct,
+  quantity,
+  purchasingPriceHT,
+  sellingPriceHT,
+  margeHT,
+  sellingPriceTTC,
+  degree
+) {
   this.nameProduct = nameProduct;
   this.quantity = quantity;
   this.purchasingPriceHT = purchasingPriceHT;
@@ -135,28 +170,42 @@ function BoissonAlcoolisee(nameProduct, quantity, purchasingPriceHT, sellingPric
   this.margeHT = margeHT;
   this.sellingPriceTTC = sellingPriceTTC;
   this.degree = degree;
-  this.tva = "20%";
+  this.tva = 20;
   this.type = "ba";
 }
 
-function BoissonNonAlcoolisee(nameProduct, quantity, purchasingPriceHT, sellingPriceHT, margeHT, sellingPriceTTC) {
+function BoissonNonAlcoolisee(
+  nameProduct,
+  quantity,
+  purchasingPriceHT,
+  sellingPriceHT,
+  margeHT,
+  sellingPriceTTC
+) {
   this.nameProduct = nameProduct;
   this.quantity = quantity;
   this.purchasingPriceHT = purchasingPriceHT;
   this.sellingPriceHT = sellingPriceHT;
   this.margeHT = margeHT;
   this.sellingPriceTTC = sellingPriceTTC;
-  this.tva = "5.5%";
+  this.tva = 5.5;
   this.type = "bna";
 }
 
-function AutreProduit(nameProduct, quantity, purchasingPriceHT, sellingPriceHT, margeHT, sellingPriceTTC) {
+function AutreProduit(
+  nameProduct,
+  quantity,
+  purchasingPriceHT,
+  sellingPriceHT,
+  margeHT,
+  sellingPriceTTC
+) {
   this.nameProduct = nameProduct;
   this.quantity = quantity;
   this.purchasingPriceHT = purchasingPriceHT;
   this.sellingPriceHT = sellingPriceHT;
   this.margeHT = margeHT;
   this.sellingPriceTTC = sellingPriceTTC;
-  this.tva = "5.5%";
+  this.tva = 5.5;
   this.type = "autre";
 }
