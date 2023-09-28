@@ -1,7 +1,3 @@
-/* body {
-  background-color: rgba(117, 38, 9, 0.8) !important;
-} */
-
 body {
   background-image: url(https://french.xinhuanet.com/photo/2018-11/16/137607240_15422447817811n.jpg);
   background-repeat: no-repeat;
@@ -76,6 +72,13 @@ a:hover {
   margin-top: 100px;
   flex-direction: column;
   gap: 10%;
+  animation: 2s slide-right forwards;
+  transform: translateX(-250%);
+}
+@keyframes slide-right {
+  to {
+    transform: translateX(0);
+  }
 }
 
 .cont {
@@ -129,6 +132,14 @@ a:hover {
   border-bottom: 5px solid rgba(202, 178, 43, 0.84);
   font-family: roboto-bold !important;
   font-weight: bold;
+  animation: 2s slide-right forwards;
+  transform: translateX(-250%);
+}
+
+@keyframes slide-right {
+  to {
+    transform: translateX(0);
+  }
 }
 
 .navbar-expand-lg .navbar-collapse {
