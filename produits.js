@@ -7,17 +7,16 @@ function renderStock(array) {
     const backgroundColor = element.quantity >= 10 ? "#01D758" : "#DC143C"; // Condition de couleur de fond initiale
 
     const productDiv = document.createElement("div");
-    productDiv.className = "productDiv";
     if (element.type == "ba") {
       productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
         <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${
         element.degree
-      }°</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
+      }°</span><button class="editBtn">X</button><button class="btnDel">X</button><br>`;
     } else {
       productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
-    <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
+        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
         element.sellingPriceTTC
-      }€ </span><button class="editBtn"></button><button class="btnDel"></button><br>`;
+      }€</span><button class="editBtn">X</button><button class="btnDel">X</button><br>`;
     }
 
     contProduct.appendChild(productDiv);
@@ -60,8 +59,22 @@ function modifProduct() {
   });
 }
 
-// LANCEMENT DE LA PAGE
+function filterProduct() {
+  let filterValue = filterInput.value.toLowerCase(); // Utilisez toLowerCase pour la comparaison insensible à la casse
+  let filteredArray = renderStockArray.filter(function (element) {
+    if (filterValue === "") {
+      // Utilisez === pour la comparaison stricte
+      return element.type === "ba" || element.type === "bna" || element.type === "autre";
+    } else {
+      return element.nameProduct.toLowerCase().includes(filterValue);
+    }
+  });
+  renderStock(filteredArray);
+}
 
+let productTypeFilter = document.querySelector("#productTypeFilter");
+let filterInput = document.getElementById("filter");
+let filterBtn = document.querySelector("#filterBtn");
 let contProduct = document.querySelector(".contProduct");
 const recupLS = localStorage.getItem("@StockArray");
 let renderStockArray;
@@ -71,3 +84,6 @@ if (recupLS) {
 } else {
   renderStockArray = [];
 }
+filterBtn.addEventListener("click", filterProduct);
+
+filterInput.addEventListener("input", filterProduct);
