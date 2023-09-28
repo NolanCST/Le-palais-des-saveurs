@@ -101,11 +101,13 @@ a:hover {
   border-radius: 4px;
   position: absolute;
   right: 6%;
+  margin-right: 20px;
 }
 
-.editBtn{
+.editBtn {
   background-color: rgba(231, 229, 226, 0.1);
   border-radius: 4px;
   position: absolute;
   right: 117px;
+  margin-right: 20px;
 }
