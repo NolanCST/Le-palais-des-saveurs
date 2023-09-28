@@ -17,6 +17,11 @@ a {
   color: rgb(133, 119, 36) !important;
 }
 
+a:hover {
+  -webkit-text-stroke: 1px rgba(190, 186, 162, 0.84);
+  -webkit-text-fill-color: transparent;
+}
+
 @font-face {
   font-family: roboto;
   src: url(./Roboto-Bold.ttf);
