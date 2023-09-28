@@ -1,4 +1,4 @@
-// // FONCTIONS
+// FONCTIONS
 
 function renderStock(array) {
   const contProduct = document.getElementById("contProduct");
@@ -71,8 +71,6 @@ function modifProduct() {
     let editType = productDiv.querySelector(".editType");
     let editPurchasingPriceHT = productDiv.querySelector(".editPurchasingPriceHT");
     let editSellingPriceHT = productDiv.querySelector(".editSellingPriceHT");
-    let editMargeHT = productDiv.querySelector(".editMargeHT");
-    let editSellingPriceTTC = productDiv.querySelector(".editSellingPriceTTC");
 
     editBtn.addEventListener("click", function () {
       // Récupérez les valeurs précédentes depuis les éléments existants
@@ -81,13 +79,22 @@ function modifProduct() {
       let previousPurchasingPriceHT = parseFloat(editPurchasingPriceHT.textContent);
       let previousSellingPriceHT = parseFloat(editSellingPriceHT.textContent);
       console.log(editName.value);
+      // Créez un tableau d'options pour le <select>
+      let typeOptions = ["ba", "bna", "autre"];
+
+      // Créez une chaîne HTML pour les options du <select> en fonction des valeurs précédentes
+      let selectOptions = typeOptions
+        .map((option) => {
+          if (option === previousType) {
+            return `<option value="${option}" selected>${option}</option>`;
+          } else {
+            return `<option value="${option}">${option}</option>`;
+          }
+        })
+        .join("");
+
       editName.innerHTML = `<input class="editInput editInputName" type="text" value="${previousName}"/>`;
-      editType.innerHTML = `<select name="productType" class="editSelectType" value="${previousType}">
-      <option value="">---Type---</option>
-      <option value="ba">ba</option>
-      <option value="bna">bna</option>
-      <option value="autre">autre</option>
-    </select>`;
+      editType.innerHTML = `<select name="productType" class="editSelectType">${selectOptions}</select>`;
       editPurchasingPriceHT.innerHTML = `<input class="editInput editInputPurchasingPriceHT" type="number" value="${previousPurchasingPriceHT}"/>`;
       editSellingPriceHT.innerHTML = `<input class="editInput editInputSellingPriceHT" type="number" value="${previousSellingPriceHT}"/>`;
 
@@ -112,14 +119,10 @@ function modifProduct() {
           editType.innerHTML = `<span>${editSelectType.value}</span>`;
           editPurchasingPriceHT.innerHTML = `<span>${editInputPurchasingPriceHT.value}€</span>`;
           editSellingPriceHT.innerHTML = `<span>${editInputSellingPriceHT.value}€</span>`;
-          const updatedProductName = editName.innerHTML;
-          const updatedProductType = editType.innerHTML;
-          const updatedProductPPrice = editPurchasingPriceHT.innerHTML;
-          const updatedProductSPrice = editSellingPriceHT.innerHTML;
         }
       });
 
-      // Mettez à jour les données du produit dans votre système (par exemple, localStorage)
+      // Mettez à jour les données du produit dans votre système
       // Vous pouvez ajouter ici la logique pour sauvegarder les modifications
     });
   });
