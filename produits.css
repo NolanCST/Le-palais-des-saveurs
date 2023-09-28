@@ -101,7 +101,7 @@ a:hover {
   border-radius: 4px;
   position: absolute;
   right: 6%;
-  margin-right: 20px;
+  margin-right: 50px;
   background-image: url(bin.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -114,7 +114,7 @@ a:hover {
   border-radius: 4px;
   position: absolute;
   right: 117px;
-  margin-right: 20px;
+  margin-right: 50px;
   background-image: url(pencil-3.png);
   background-repeat: no-repeat;
   background-size: cover;
