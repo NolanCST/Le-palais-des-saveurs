@@ -83,6 +83,7 @@ a {
   border-top: solid 1px rgba(202, 178, 43, 0.84);
   border-bottom: solid 1px rgba(202, 178, 43, 0.84);
   margin-top: 10px;
+  font-size: 15px;
 }
 
 .quantityStock {
@@ -93,5 +94,13 @@ a {
 .btnDel {
   background-color: rgba(231, 229, 226, 0.1);
   border-radius: 4px;
-  align-items: flex-end !important;
+  position: absolute;
+  right: 6%;
+}
+
+.editDel{
+  background-color: rgba(231, 229, 226, 0.1);
+  border-radius: 4px;
+  position: absolute;
+  right: 117px;
 }
