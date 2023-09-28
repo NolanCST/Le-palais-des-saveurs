@@ -48,6 +48,10 @@ select {
   color: rgba(0, 0, 0, 0.499);
 }
 
+a {
+  color: rgb(133, 119, 36) !important;
+}
+
 @font-face {
   font-family: roboto;
   src: url(./Roboto-Bold.ttf);
@@ -56,7 +60,7 @@ select {
 .mainCont {
   border: 3px solid rgba(202, 178, 43, 0.84);
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: rgba(252, 255, 243, 0.84);
   width: 80%;
   height: 35vw;
   margin: auto;
@@ -72,7 +76,7 @@ select {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   width: 85%;
   margin: auto;
   margin-left: auto;
@@ -115,9 +119,10 @@ select {
 }
 
 #editNavBar {
+  background-color: rgba(231, 229, 226, 0.54) !important;
   border-bottom: 5px solid rgba(202, 178, 43, 0.84);
-  background-color: rgba(231, 230, 226, 0.84) !important;
-  font-family: roboto-bold;
+  font-family: roboto-bold !important;
+  font-weight: bold;
 }
 
 .navbar-expand-lg .navbar-collapse {
@@ -128,8 +133,13 @@ select {
 
 .navbar-expand-lg .navbar-nav {
   flex-direction: row;
-  gap: 30px;
+  gap: 160px;
   margin-right: 20px;
+  font-size: 19px;
+}
+
+.navbar-brand {
+  font-size: 2rem !important;
 }
 
 #palais {
