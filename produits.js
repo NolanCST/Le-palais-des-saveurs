@@ -107,7 +107,6 @@ if (recupLS) {
 } else {
   renderStockArray = [];
 }
-filterBtn.addEventListener("click", filterProduct);
 
 filterInput.addEventListener("input", filterProduct);
 
