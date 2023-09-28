@@ -99,9 +99,9 @@ function modifProduct() {
 
       // Mettez à jour les données du produit avec les nouvelles valeurs
       let quantityStock = document.querySelector(".quantityStock");
-      let editMargeHT = document.querySelector(".editMargeHT");
-      let editSellingPriceTTC = document.querySelector(".editSellingPriceTTC");
-      let editTva = document.querySelector(".editTva");
+      let editMargeHT = productDiv.querySelector(".editMargeHT");
+      let editSellingPriceTTC = productDiv.querySelector(".editSellingPriceTTC");
+      let editTva = productDiv.querySelector(".editTva");
       let editInputName = productDiv.querySelector(".editInputName");
       let editSelectType = productDiv.querySelector(".editSelectType");
       let editInputPurchasingPriceHT = productDiv.querySelector(".editInputPurchasingPriceHT");
@@ -124,9 +124,10 @@ function modifProduct() {
           let newPurchasingPriceHT = editInputPurchasingPriceHT.value;
           let newSellingPriceHT = editInputSellingPriceHT.value;
           let newQuantity = quantityStock.value;
+          let newTva = editTva.value;
           let newMargeHT = editMargeHT.value;
           let newSellingPriceTTC = editSellingPriceTTC.value;
-          let newTva = editTva.value;
+
           // Mettez à jour les éléments visuels avec les nouvelles valeurs
           editName.innerHTML = `<span>${newName}</span>`;
           editType.innerHTML = `<span>${newType}</span>`;
@@ -160,8 +161,6 @@ function modifProduct() {
           localStorage.setItem("@StockArray", JSON.stringify(updatedStockArray));
         }
       });
-
-      // Mettez à jour les données du produit dans votre système
     });
   });
 }
