@@ -48,14 +48,6 @@ img {
   border-bottom: 5px solid rgba(202, 178, 43, 0.84);
   font-family: roboto-bold !important;
   font-weight: bold;
-  animation: 2s slide-right forwards;
-  transform: translateX(-250%);
-}
-
-@keyframes slide-right {
-  to {
-    transform: translateX(0);
-  }
 }
 
 .navbar-expand-lg .navbar-collapse {
@@ -94,14 +86,6 @@ img {
   margin-top: 100px;
   gap: 10%;
   overflow-y: scroll;
-  animation: 2s slide-right forwards;
-  transform: translateX(-250%);
-}
-
-@keyframes slide-right {
-  to {
-    transform: translateX(0);
-  }
 }
 
 .products {

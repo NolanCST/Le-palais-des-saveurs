@@ -35,14 +35,6 @@ a:hover {
   height: 35vw;
   margin: auto;
   margin-top: 100px;
-  animation: 2s slide-right forwards;
-  transform: translateX(-250%);
-}
-
-@keyframes slide-right {
-  to {
-    transform: translateX(0);
-  }
 }
 
 #filter {
@@ -56,14 +48,6 @@ a:hover {
   border-bottom: 5px solid rgba(202, 178, 43, 0.84);
   font-family: roboto-bold !important;
   font-weight: bold;
-  animation: 2s slide-right forwards;
-  transform: translateX(-250%);
-}
-
-@keyframes slide-right {
-  to {
-    transform: translateX(0);
-  }
 }
 
 .navbar-expand-lg .navbar-collapse {
