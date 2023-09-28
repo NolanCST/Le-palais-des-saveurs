@@ -7,10 +7,18 @@ function renderStock(array) {
     const backgroundColor = element.quantity >= 10 ? "#01D758" : "#DC143C"; // Condition de couleur de fond initiale
 
     const productDiv = document.createElement("div");
-    productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
-        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${
-      element.degree
-    }°</span><button class="btnDel">X</button><br>`;
+    productDiv.innerHTML = `<span>${index + 1} | Nom: ${
+      element.nameProduct
+    } | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
+      element.quantity
+    }" style="background-color: ${backgroundColor}" />
+        <span>Type: ${element.type} | Prix d'achat HT: ${
+      element.purchasingPriceHT
+    }€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${
+      element.tva
+    } | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
+      element.sellingPriceTTC
+    }€ | Degre: ${element.degree}°</span><button class="btnDel">X</button><br>`;
 
     contProduct.appendChild(productDiv);
 
@@ -23,7 +31,8 @@ function renderStock(array) {
       }
       const newQuantity = parseInt(quantityStock.value);
       element.quantity = newQuantity;
-      const updatedStockArray = JSON.parse(localStorage.getItem("@StockArray")) || [];
+      const updatedStockArray =
+        JSON.parse(localStorage.getItem("@StockArray")) || [];
       updatedStockArray[index] = element; // Mettez à jour l'élément dans le tableau
       localStorage.setItem("@StockArray", JSON.stringify(updatedStockArray)); // Mettez à jour le localStorage
     });
@@ -45,8 +54,27 @@ function deleteProduct() {
   });
 }
 
-// LANCEMENT DE LA PAGE
+function filterProduct() {
+  let filterValue = filterInput.value.toLowerCase(); // Utilisez toLowerCase pour la comparaison insensible à la casse
+  let productTypeFilterValue = productTypeFilter.value.toLowerCase(); // Utilisez toLowerCase pour la comparaison insensible à la casse
+  let filteredArray = renderStockArray.filter(function (element) {
+    if (filterValue === "") {
+      // Utilisez === pour la comparaison stricte
+      return (
+        element.type === "ba" ||
+        element.type === "bna" ||
+        element.type === "autre"
+      );
+    } else {
+      return element.nameProduct.toLowerCase().includes(filterValue);
+    }
+  });
+  renderStock(filteredArray);
+}
 
+let productTypeFilter = document.querySelector("#productTypeFilter");
+let filterInput = document.getElementById("filter");
+let filterBtn = document.querySelector("#filterBtn");
 let contProduct = document.querySelector(".contProduct");
 const recupLS = localStorage.getItem("@StockArray");
 let renderStockArray;
@@ -56,3 +84,6 @@ if (recupLS) {
 } else {
   renderStockArray = [];
 }
+filterBtn.addEventListener("click", filterProduct);
+
+filterInput.addEventListener("input", filterProduct);
