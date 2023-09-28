@@ -54,6 +54,13 @@ function deleteProduct() {
   });
 }
 
+function modifProduct() {
+  let btnEditArray = document.querySelectorAll(".editBtn");
+  btnEditArray.forEach(function (element, index) {
+    element.addEventListener("click", function () {});
+  });
+}
+
 function filterProduct() {
   let filterValue = filterInput.value.toLowerCase(); // Utilisez toLowerCase pour la comparaison insensible à la casse
   let productTypeFilterValue = productTypeFilter.value.toLowerCase(); // Utilisez toLowerCase pour la comparaison insensible à la casse
