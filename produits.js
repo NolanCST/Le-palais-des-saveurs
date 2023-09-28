@@ -9,31 +9,13 @@ function renderStock(array) {
     const productDiv = document.createElement("div");
     productDiv.className = "productDiv";
     if (element.type == "ba") {
-      productDiv.innerHTML = `<span>${index + 1} | Nom: ${
-        element.nameProduct
-      } | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
-        element.quantity
-      }" style="background-color: ${backgroundColor}" />
-        <span>Type: ${element.type} | Prix d'achat HT: ${
-        element.purchasingPriceHT
-      }€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${
-        element.tva
-      } | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
-        element.sellingPriceTTC
-      }€ | Degre: ${
+      productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
+        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${
         element.degree
       }°</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     } else {
-      productDiv.innerHTML = `<span>${index + 1} | Nom: ${
-        element.nameProduct
-      } | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${
-        element.quantity
-      }" style="background-color: ${backgroundColor}" />
-        <span>Type: ${element.type} | Prix d'achat HT: ${
-        element.purchasingPriceHT
-      }€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${
-        element.tva
-      } | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
+      productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
+        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
         element.sellingPriceTTC
       }€ </span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     }
@@ -49,8 +31,7 @@ function renderStock(array) {
       }
       const newQuantity = parseInt(quantityStock.value);
       element.quantity = newQuantity;
-      const updatedStockArray =
-        JSON.parse(localStorage.getItem("@StockArray")) || [];
+      const updatedStockArray = JSON.parse(localStorage.getItem("@StockArray")) || [];
       updatedStockArray[index] = element; // Mettez à jour l'élément dans le tableau
       localStorage.setItem("@StockArray", JSON.stringify(updatedStockArray)); // Mettez à jour le localStorage
     });
@@ -80,20 +61,31 @@ function modifProduct() {
 }
 
 function filterProduct() {
-  let filterValue = filterInput.value.toLowerCase(); // Utilisez toLowerCase pour la comparaison insensible à la casse
-  let filteredArray = renderStockArray.filter(function (element) {
-    if (filterValue === "") {
-      // Utilisez === pour la comparaison stricte
-      return (
-        element.type === "ba" ||
-        element.type === "bna" ||
-        element.type === "autre"
-      );
-    } else {
-      return element.nameProduct.toLowerCase().includes(filterValue);
-    }
+  filterInput.addEventListener("input", () => {
+    let filterValue = filterInput.value.toLowerCase(); // Utilisez toLowerCase pour la comparaison insensible à la casse
+    let filteredArray = renderStockArray.filter(function (element) {
+      if (filterValue === "") {
+        // Utilisez === pour la comparaison stricte
+        return element.type === "ba" || element.type === "bna" || element.type === "autre";
+      } else {
+        return element.nameProduct.toLowerCase().includes(filterValue);
+      }
+    });
+    renderStock(filteredArray);
   });
-  renderStock(filteredArray);
+}
+
+function filterType() {
+  productTypeFilter.addEventListener("input", () => {
+    let filteredArray = renderStockArray.filter(function (element) {
+      if (productTypeFilter.value == "") {
+        return element.type == "ba" || element.type == "bna" || element.type == "autre";
+      } else {
+        return element.type == productTypeFilter.value;
+      }
+    });
+    renderStock(filteredArray);
+  });
 }
 
 let productTypeFilter = document.querySelector("#productTypeFilter");
@@ -108,17 +100,6 @@ if (recupLS) {
   renderStockArray = [];
 }
 
-filterInput.addEventListener("input", filterProduct);
+filterProduct();
 
-productTypeFilter.addEventListener("input", () => {
-  let filteredArray = renderStockArray.filter(function (element) {
-    if (productTypeFilter.value == "") {
-      return (
-        element.type == "ba" || element.type == "bna" || element.type == "autre"
-      );
-    } else {
-      return element.type == productTypeFilter.value;
-    }
-  });
-  renderStock(filteredArray);
-});
+filterType();
