@@ -3,8 +3,10 @@
 function renderStock(array) {
   contProduct.innerHTML = "";
   array.forEach(function (element, index) {
-    contProduct.innerHTML += `<span>${index + 1} | ${element.nameProduct}</span><input class="quantityStock" type="number"/>
-        <span>${element.type} | ${element.purchasingPriceHT}€ | ${element.sellingPriceHT}€ | ${element.tva} | ${element.margeHT}€ | ${element.sellingPriceTTC}€ | ${element.degree}°</span><button class="btnDel">X</button><br>`;
+    contProduct.innerHTML += `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" value="${element.quantity}"/>
+        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${
+      element.degree
+    }°</span><button class="btnDel">X</button><br>`;
   });
   deleteProduct();
 }
