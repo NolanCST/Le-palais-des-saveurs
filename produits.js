@@ -24,9 +24,9 @@ function renderStock(array) {
       }" style="background-color: ${backgroundColor}" />
         Type: <span class="editType">${element.type}</span> | Prix d'achat HT: <span class="editPurchasingPriceHT">${element.purchasingPriceHT}€</span> | Prix de vente HT: <span class="editSellingPriceHT">${
         element.sellingPriceHT
-      }€</span><span> | TVA: ${element.tva} | Marge HT: <span class="editMargeHT">${element.margeHT}€</span> | Prix de vente TTC: <span class="editSellingPriceTTC">${
+      }€</span> | TVA: <Span class="editTva">${element.tva}</span> | Marge HT: <span class="editMargeHT">${element.margeHT}€</span> | Prix de vente TTC: <span class="editSellingPriceTTC">${
         element.sellingPriceTTC
-      }€</span></span><button class="editBtn"></button><button class="btnDel"></button><br>`;
+      }€</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     }
 
     contProduct.appendChild(productDiv);
@@ -78,7 +78,6 @@ function modifProduct() {
       let previousType = editType.textContent;
       let previousPurchasingPriceHT = parseFloat(editPurchasingPriceHT.textContent);
       let previousSellingPriceHT = parseFloat(editSellingPriceHT.textContent);
-      console.log(editName.value);
       // Créez un tableau d'options pour le <select>
       let typeOptions = ["ba", "bna", "autre"];
 
@@ -99,6 +98,10 @@ function modifProduct() {
       editSellingPriceHT.innerHTML = `<input class="editInput editInputSellingPriceHT" type="number" value="${previousSellingPriceHT}"/>`;
 
       // Mettez à jour les données du produit avec les nouvelles valeurs
+      let quantityStock = document.querySelector(".quantityStock");
+      let editMargeHT = productDiv.querySelector(".editMargeHT");
+      let editSellingPriceTTC = productDiv.querySelector(".editSellingPriceTTC");
+      let editTva = productDiv.querySelector(".editTva");
       let editInputName = productDiv.querySelector(".editInputName");
       let editSelectType = productDiv.querySelector(".editSelectType");
       let editInputPurchasingPriceHT = productDiv.querySelector(".editInputPurchasingPriceHT");
@@ -115,15 +118,49 @@ function modifProduct() {
 
       document.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
-          editName.innerHTML = `<span>${editInputName.value}</span>`;
-          editType.innerHTML = `<span>${editSelectType.value}</span>`;
-          editPurchasingPriceHT.innerHTML = `<span>${editInputPurchasingPriceHT.value}€</span>`;
-          editSellingPriceHT.innerHTML = `<span>${editInputSellingPriceHT.value}€</span>`;
+          // Récupérez les nouvelles valeurs depuis les champs d'édition
+          let newName = editInputName.value;
+          let newType = editSelectType.value;
+          let newPurchasingPriceHT = editInputPurchasingPriceHT.value;
+          let newSellingPriceHT = editInputSellingPriceHT.value;
+          let newQuantity = quantityStock.value;
+          let newTva = editTva.value;
+          let newMargeHT = editMargeHT.value;
+          let newSellingPriceTTC = editSellingPriceTTC.value;
+
+          // Mettez à jour les éléments visuels avec les nouvelles valeurs
+          editName.innerHTML = `<span>${newName}</span>`;
+          editType.innerHTML = `<span>${newType}</span>`;
+          editPurchasingPriceHT.innerHTML = `<span>${newPurchasingPriceHT}€</span>`;
+          editSellingPriceHT.innerHTML = `<span>${newSellingPriceHT}€</span>`;
+
+          // Mettez à jour les données du produit dans votre système ici
+
+          // Sauvegardez les nouvelles valeurs dans le localStorage
+          let productData = {
+            nameProduct: newName,
+            quantity: newQuantity,
+            type: newType,
+            purchasingPriceHT: parseFloat(newPurchasingPriceHT),
+            sellingPriceHT: parseFloat(newSellingPriceHT),
+            tva: parseFloat(newTva),
+            margeHT: parseFloat(newMargeHT),
+            SellingPriceTTC: parseFloat(newSellingPriceTTC),
+          };
+
+          // Récupérez le tableau de produits depuis le localStorage
+          let updatedStockArray = JSON.parse(localStorage.getItem("@StockArray")) || [];
+
+          // Récupérez l'index de l'élément dans le tableau
+          let productIndex = Array.from(productDiv.parentElement.children).indexOf(productDiv);
+
+          // Mettez à jour l'élément correspondant dans le tableau
+          updatedStockArray[productIndex] = productData;
+
+          // Mettez à jour le localStorage avec le tableau mis à jour
+          localStorage.setItem("@StockArray", JSON.stringify(updatedStockArray));
         }
       });
-
-      // Mettez à jour les données du produit dans votre système
-      // Vous pouvez ajouter ici la logique pour sauvegarder les modifications
     });
   });
 }
