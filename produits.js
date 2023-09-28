@@ -56,4 +56,3 @@ if (recupLS) {
 } else {
   renderStockArray = [];
 }
-console.log(renderStockArray);
