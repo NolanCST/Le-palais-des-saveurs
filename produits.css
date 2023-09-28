@@ -43,11 +43,6 @@ a:hover {
   border-bottom: 1px solid rgba(202, 178, 43, 0.84);
 }
 
-#filterBtn {
-  border: none;
-  background-color: rgba(231, 229, 226, 0.1);
-}
-
 #editNavBar {
   background-color: rgba(231, 229, 226, 0.54) !important;
   border-bottom: 5px solid rgba(202, 178, 43, 0.84);
@@ -120,4 +115,11 @@ a:hover {
   background-size: cover;
   width: 25px;
   height: 25px;
+}
+
+#productTypeFilter {
+  background-color: rgba(231, 229, 226, 0.1);
+  border: none;
+  border-bottom: 1px solid rgba(202, 178, 43, 0.84);
+  height: 27px;
 }
