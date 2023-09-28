@@ -7,18 +7,18 @@ function renderStock(array) {
     const backgroundColor = element.quantity >= 10 ? "#01D758" : "#DC143C"; // Condition de couleur de fond initiale
 
     const productDiv = document.createElement("div");
-    productDiv.innerHTML = `<span>${index + 1} | Nom: ${
-      element.nameProduct
-    } | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" value="${
-      element.quantity
-    }" style="background-color: ${backgroundColor}" />
-        <span>Type: ${element.type} | Prix d'achat HT: ${
-      element.purchasingPriceHT
-    }€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${
-      element.tva
-    } | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
-      element.sellingPriceTTC
-    }€ | Degre: ${element.degree}°</span><button class="btnDel">X</button><br>`;
+    productDiv.className = "productDiv";
+    if (element.type == "ba") {
+      productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
+        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${element.sellingPriceTTC}€ | Degre: ${
+        element.degree
+      }°</span><button class="btnDel">X</button><br>`;
+    } else {
+      productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
+    <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
+        element.sellingPriceTTC
+      }€ </span><button class="btnDel">X</button><br>`;
+    }
 
     contProduct.appendChild(productDiv);
 
@@ -31,8 +31,7 @@ function renderStock(array) {
       }
       const newQuantity = parseInt(quantityStock.value);
       element.quantity = newQuantity;
-      const updatedStockArray =
-        JSON.parse(localStorage.getItem("@StockArray")) || [];
+      const updatedStockArray = JSON.parse(localStorage.getItem("@StockArray")) || [];
       updatedStockArray[index] = element; // Mettez à jour l'élément dans le tableau
       localStorage.setItem("@StockArray", JSON.stringify(updatedStockArray)); // Mettez à jour le localStorage
     });
@@ -65,4 +64,3 @@ if (recupLS) {
 } else {
   renderStockArray = [];
 }
-console.log(renderStockArray);
