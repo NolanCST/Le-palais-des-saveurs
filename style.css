@@ -1,6 +1,8 @@
 #editNavBar {
-  background-color: rgba(231, 230, 226, 0.84) !important;
+  background-color: rgba(231, 229, 226, 0.54) !important;
   border-bottom: 5px solid rgba(202, 178, 43, 0.84);
+  font-family: roboto-bold !important;
+  font-weight: bold;
 }
 
 .btnAdd {
@@ -20,9 +22,12 @@
 }
 
 .navbar-expand-lg .navbar-nav {
-  flex-direction: row;
-  gap: 30px;
-  margin-right: 20px;
+
+    flex-direction: row;
+    gap: 160px;
+    margin-right: 20px;
+    font-size: 19px;
+  
 }
 
 @font-face {
@@ -31,7 +36,13 @@
 }
 
 a:hover {
-  color: white !important;
+  /* color: white !important; */
+  -webkit-text-stroke: 1px rgba(190, 186, 162, 0.84);
+  -webkit-text-fill-color: transparent;
+}
+
+a {
+  color: rgb(133, 119, 36) !important;
 }
 
 body {
@@ -40,11 +51,60 @@ body {
   background-size: cover;
 }
 
-h1 {
-  text-align: center;
-  position: relative;
-  top: 300px;
-  color: rgba(231, 230, 226, 0.84) !important;
+.fiou {
+  width: max-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
   font-family: roboto-bold;
-  font-size: 4.5rem !important;
+  font-size: 80px;
+  font-weight: 500;
+  /* -webkit-text-stroke: 1px rgba(231, 230, 226, 0.84);
+  -webkit-text-fill-color: transparent; */
+  /* transform: translateY(150px);
+  transform: translate(42px, 18px);
+  transition: transform 1s; */
+  color: rgba(231, 230, 226, 0.54);
+}
+
+/* @keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+h1 {
+  animation: 1s ease-out 0s 1 slideInLeft;
+} */
+
+.mainFiou {
+  width: 100%;
+  overflow: hidden;
+  margin-left: 300px;
+  max-width: 500px;
+}
+
+.mainFiou h1 {
+  animation: 2s slide-right forwards;
+  transform: translateX(-250%);
+}
+
+@keyframes slide-right {
+  to {
+    transform: translateX(0);
+  }
+}
+
+.navbar-brand {
+  padding-top: var(--bs-navbar-brand-padding-y);
+  padding-bottom: var(--bs-navbar-brand-padding-y);
+  margin-right: var(--bs-navbar-brand-margin-end);
+  font-size: var(--bs-navbar-brand-font-size);
+  color: var(--bs-navbar-brand-color);
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 2rem !important;
 }
