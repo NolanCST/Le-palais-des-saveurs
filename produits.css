@@ -34,18 +34,13 @@ a:hover {
   width: 80%;
   height: 35vw;
   margin: auto;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
 #filter {
   background-color: rgba(231, 229, 226, 0.1);
   border: none;
   border-bottom: 1px solid rgba(202, 178, 43, 0.84);
-}
-
-#filterBtn {
-  border: none;
-  background-color: rgba(231, 229, 226, 0.1);
 }
 
 #editNavBar {
@@ -120,4 +115,11 @@ a:hover {
   background-size: cover;
   width: 25px;
   height: 25px;
+}
+
+#productTypeFilter {
+  background-color: rgba(231, 229, 226, 0.1);
+  border: none;
+  border-bottom: 1px solid rgba(202, 178, 43, 0.84);
+  height: 27px;
 }
