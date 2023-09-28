@@ -1,0 +1,67 @@
+body {
+  background-image: url(https://french.xinhuanet.com/photo/2018-11/16/137607240_15422447817811n.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a {
+  color: rgb(133, 119, 36) !important;
+}
+
+a:hover {
+  -webkit-text-stroke: 1px rgba(190, 186, 162, 0.84);
+  -webkit-text-fill-color: transparent;
+}
+
+@font-face {
+  font-family: roboto;
+  src: url(./Roboto-Bold.ttf);
+}
+
+img {
+  width: 10vw;
+  border-radius: 5px;
+}
+
+#editNavBar {
+  background-color: rgba(231, 229, 226, 0.54) !important;
+  border-bottom: 5px solid rgba(202, 178, 43, 0.84);
+  font-family: roboto-bold !important;
+  font-weight: bold;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  display: flex !important;
+  flex-basis: auto;
+  justify-content: end;
+}
+
+.navbar-expand-lg .navbar-nav {
+  flex-direction: row;
+  gap: 160px;
+  margin-right: 20px;
+  font-size: 19px;
+}
+
+.navbar-brand {
+  font-size: 2rem !important;
+}
+
+#palais {
+  margin-left: 20px;
+}
+
+.whiteContainer {
+  border: 3px solid rgba(202, 178, 43, 0.84);
+  border-radius: 5px;
+  background-color: rgba(252, 255, 243, 0.84);
+  width: 80%;
+  height: 35vw;
+  margin: auto;
+  margin-top: auto;
+  margin-top: auto;
+  display: flex;
+  margin-top: 100px;
+  flex-direction: column;
+  gap: 10%;
+}
