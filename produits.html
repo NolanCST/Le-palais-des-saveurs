@@ -66,7 +66,12 @@
           id="filter"
           placeholder="Recherche produit"
         />
-        <button id="filterBtn"><img src="search-outline.svg" alt="" /></button>
+        <select name="productType" id="productTypeFilter">
+          <option value="">---Type---</option>
+          <option value="ba">Boisson alcoolisée</option>
+          <option value="bna">Boisson non alcoolisée</option>
+          <option value="autre">Autre</option>
+        </select>
         <div id="contProduct" class="contProduct"></div>
       </div>
     </main>

@@ -15,7 +15,7 @@ function renderStock(array) {
       }°</span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     } else {
       productDiv.innerHTML = `<span>${index + 1} | Nom: ${element.nameProduct} | Quantite: </span><input class="quantityStock" type="number" id="quantity-${index}" min=0 value="${element.quantity}" style="background-color: ${backgroundColor}" />
-    <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
+        <span>Type: ${element.type} | Prix d'achat HT: ${element.purchasingPriceHT}€ | Prix de vente HT: ${element.sellingPriceHT}€ | TVA: ${element.tva} | Marge HT: ${element.margeHT}€ | Prix de vente TTC: ${
         element.sellingPriceTTC
       }€ </span><button class="editBtn"></button><button class="btnDel"></button><br>`;
     }
@@ -60,8 +60,36 @@ function modifProduct() {
   });
 }
 
-// LANCEMENT DE LA PAGE
+function filterProduct() {
+  filterInput.addEventListener("input", () => {
+    let filterValue = filterInput.value.toLowerCase(); // Utilisez toLowerCase pour la comparaison insensible à la casse
+    let filteredArray = renderStockArray.filter(function (element) {
+      if (filterValue === "") {
+        // Utilisez === pour la comparaison stricte
+        return element.type === "ba" || element.type === "bna" || element.type === "autre";
+      } else {
+        return element.nameProduct.toLowerCase().includes(filterValue);
+      }
+    });
+    renderStock(filteredArray);
+  });
+}
 
+function filterType() {
+  productTypeFilter.addEventListener("input", () => {
+    let filteredArray = renderStockArray.filter(function (element) {
+      if (productTypeFilter.value == "") {
+        return element.type == "ba" || element.type == "bna" || element.type == "autre";
+      } else {
+        return element.type == productTypeFilter.value;
+      }
+    });
+    renderStock(filteredArray);
+  });
+}
+
+let productTypeFilter = document.querySelector("#productTypeFilter");
+let filterInput = document.getElementById("filter");
 let contProduct = document.querySelector(".contProduct");
 const recupLS = localStorage.getItem("@StockArray");
 let renderStockArray;
@@ -71,3 +99,7 @@ if (recupLS) {
 } else {
   renderStockArray = [];
 }
+
+filterProduct();
+
+filterType();
